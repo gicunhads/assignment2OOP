@@ -25,7 +25,7 @@ public class Manager extends Employee {
         // couldnt call the method getBonus() here... so it is dangerous for the grossSalary, need to check that
         
         this.degree = degree; // add error handling later if not BSc, MSc, PhD
-        this.tax = this.getTax();
+        this.tax = 0.1;
         this.grossSalary = this.getGrossSalary();
 
         System.out.println(String.format("Manager %s was registered successfully", ID));
