@@ -31,7 +31,7 @@ public class Director extends Manager {
 
     @Override
     public double getGrossSalary() {
-        grossSalary = (this.grossSalary * (1 + this.getBonus())+ 5000);
+        grossSalary = (super.grossSalary * (1 + this.getBonus())+ 5000);
         return Double.parseDouble(String.format("%.2f", grossSalary));
     }
 

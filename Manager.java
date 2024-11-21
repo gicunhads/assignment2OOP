@@ -53,7 +53,7 @@ public class Manager extends Employee {
 
     @Override 
     public double getGrossSalary() {
-        grossSalary = this.grossSalary * (1 + this.getBonus());
+        grossSalary = super.grossSalary * (1 + this.getBonus());
         return Double.parseDouble(String.format("%.2f", grossSalary));
     }
 
