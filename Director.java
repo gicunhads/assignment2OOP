@@ -24,16 +24,13 @@ public class Director extends Manager {
         super(ID, name, grossSalary, degree);
         this.department = department;
         this.tax = this.getTax();
-        this.grossSalary = this.getGrossSalary(); // does it considers the real tax? be careful
+        this.grossSalary = (grossSalary * (1 + this.getBonus())+ 5000);
         
         System.out.println(String.format("Director %s was registered successfully", ID));
     }
 
-    @Override
-    public double getGrossSalary() {
-        grossSalary = (super.grossSalary * (1 + this.getBonus())+ 5000);
-        return Double.parseDouble(String.format("%.2f", grossSalary));
-    }
+    
+    
 
     @Override
     public double getTax(){

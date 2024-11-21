@@ -21,12 +21,10 @@ public class Manager extends Employee {
     
     //constructor 
     public Manager(String ID, String name, double grossSalary, String degree){
-        super(ID, name, grossSalary);
-        // couldnt call the method getBonus() here... so it is dangerous for the grossSalary, need to check that
-        
+        super(ID, name, grossSalary);     
         this.degree = degree; // add error handling later if not BSc, MSc, PhD
         this.tax = 0.1;
-        this.grossSalary = this.getGrossSalary();
+        this.grossSalary = grossSalary  * (1 + this.getBonus());
 
         System.out.println(String.format("Manager %s was registered successfully", ID));
     }
@@ -51,11 +49,6 @@ public class Manager extends Employee {
 
     // need to get these as default:
 
-    @Override 
-    public double getGrossSalary() {
-        grossSalary = super.grossSalary * (1 + this.getBonus());
-        return Double.parseDouble(String.format("%.2f", grossSalary));
-    }
 
     @Override
     public void getEmployeesInfo(){
