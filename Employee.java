@@ -20,7 +20,6 @@ and after the result of any calculation with salary values.
 When the employee is created successfully, the company should return the message:
 
 "Employee <ID> was registered successfully." 
-Methods: getNetSalary(), getGrossSalary(), getInfo(), updateName(), updateSalary(), equals()
 */
 
 
