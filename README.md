@@ -7,7 +7,6 @@ Assigned to: Gio
 2. Employee Subclasses (Manager, Director) 
 Assigned to: Gio
 
-
 3. Employee Intern Subclass
 Assigned to: Leo
 
