@@ -34,9 +34,9 @@ public class Director extends Manager {
 
     @Override
     public double getTax(){
-        if (this.getGrossSalary() < 30000) {
+        if (this.grossSalary < 30000) {
             return 0.10;
-        } else if (this.getGrossSalary() <= 50000) { 
+        } else if (this.grossSalary <= 50000) { 
             return 0.20;
         } else { 
             return 0.30;
