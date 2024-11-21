@@ -27,15 +27,15 @@ public class Employee {
     
     final private String ID;
     String name;
-    private double grossSalary;
-    double percentageTax;
+    double grossSalary;
+    double tax;
 
     // constructor
     public Employee(String ID, String name, double grossSalary){
         this.ID = ID;
         this.name = name;
         this.grossSalary = grossSalary;
-        this.percentageTax = 0.1;
+        this.tax = 0.1;
         
         System.out.println(String.format("Employee %s was registered successfully", this.ID)); }
 
@@ -43,13 +43,17 @@ public class Employee {
     public String getName(){
         return this.name;
     }
+    
+    public double getTax(){
+        return this.tax;
+    }
 
     public double getGrossSalary() {
         return Double.parseDouble(String.format("%.2f", this.grossSalary));
     }
 
     public double getNetSalary(){
-        double netSalary = this.grossSalary - (this.grossSalary * percentageTax);
+        double netSalary = this.grossSalary - (this.grossSalary * this.getTax());
         return Double.parseDouble(String.format("%.2f", netSalary));
     }
 

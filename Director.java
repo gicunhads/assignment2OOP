@@ -18,4 +18,39 @@ String representation for Directors (note: all in the same line):
 
 public class Director extends Manager {
     
-}
+    String department;
+
+    public Director(String ID, String name, double grossSalary, String degree, String department) {
+        super(ID, name, grossSalary, degree);
+        this.department = department;
+        this.tax = this.getTax();
+        this.grossSalary = this.getGrossSalary(); // does it considers the real tax? be careful
+        
+        System.out.println(String.format("Director %s was registered successfully", ID));
+    }
+
+    @Override
+    public double getGrossSalary() {
+        grossSalary = (this.grossSalary * (1 + this.getBonus())+ 5000);
+        return Double.parseDouble(String.format("%.2f", grossSalary));
+    }
+
+    @Override
+    public double getTax(){
+        if (this.getGrossSalary() < 30000) {
+            return 0.10;
+        } else if (this.getGrossSalary() <= 50000) { 
+            return 0.20;
+        } else { 
+            return 0.30;
+        }
+        }
+    
+    @Override
+    public void getEmployeesInfo(){
+            System.out.println(String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
+        }
+   
+    }
+
+
