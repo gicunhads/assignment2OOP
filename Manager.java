@@ -15,15 +15,22 @@ String representation for Managers:
 
 <degree> <name>’s gross salary is <gross_salary> SEK per month. */
 
+import java.util.List;
+
 public class Manager extends Employee {    
 
     String degree;
+    double originalGrossSalary; // storing the original gross salary
     
     //constructor 
     public Manager(String ID, String name, double grossSalary, String degree){
         super(ID, name, grossSalary);     
-        this.degree = degree; // add error handling later if not BSc, MSc, PhD
+        this.degree = degree.toLowerCase(); 
+        if (!List.of("bsc", "msc", "phd").contains(degree)) {
+            throw new IllegalArgumentException("Invalid department.");
+        }
         this.tax = 0.1;
+        this.originalGrossSalary = grossSalary;
         this.grossSalary = grossSalary  * (1 + this.getBonus());
 
         System.out.println(String.format("Manager %s was registered successfully", ID));
@@ -41,13 +48,10 @@ public class Manager extends Employee {
 
             case "PhD" -> {return 0.35;}
 
-            default -> {return 0;} // maybe change this return statement since it shouldnt happen -error handling before
+            default -> throw new IllegalArgumentException("Invalid degree type");
 
         }
     }
-
-
-    // need to get these as default:
 
 
     @Override
