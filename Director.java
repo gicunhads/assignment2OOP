@@ -62,11 +62,10 @@ public class Director extends Manager {
         double totalTax;
         double netSalary;
         
-        if (this.grossSalary < 30000) {
-            totalTax = this.grossSalary * 0.10;
-        } else if (this.grossSalary <= 50000) {
-            totalTax = this.grossSalary * 0.20;
-        } else {
+        if (this.grossSalary <= 50000) {
+            totalTax = this.grossSalary * this.getTax();
+        }
+         else {
             double firstPartTax = 30000 * 0.20;
             double secondPartTax = (this.grossSalary - 30000) * 0.40;
             
