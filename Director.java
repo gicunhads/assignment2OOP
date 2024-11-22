@@ -57,26 +57,26 @@ public class Director extends Manager {
             System.out.println(String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
         }
    
-        @Override
-        public double getNetSalary() {
-            double totalTax;
-            double netSalary;
+    @Override
+    public double getNetSalary() {
+        double totalTax;
+        double netSalary;
+        
+        if (this.grossSalary < 30000) {
+            totalTax = this.grossSalary * 0.10;
+        } else if (this.grossSalary <= 50000) {
+            totalTax = this.grossSalary * 0.20;
+        } else {
+            double firstPartTax = 30000 * 0.20;
+            double secondPartTax = (this.grossSalary - 30000) * 0.40;
             
-            if (this.grossSalary < 30000) {
-                totalTax = this.grossSalary * 0.10;
-            } else if (this.grossSalary <= 50000) {
-                totalTax = this.grossSalary * 0.20;
-            } else {
-                double firstPartTax = 30000 * 0.20;
-                double secondPartTax = (this.grossSalary - 30000) * 0.40;
-                
-                totalTax = firstPartTax + secondPartTax;
-            }
-            
-            netSalary = Double.parseDouble(String.format(Locale.US, "%.2f", this.grossSalary - totalTax));
-    
-            return netSalary;
+            totalTax = firstPartTax + secondPartTax;
         }
+        
+        netSalary = Double.parseDouble(String.format(Locale.US, "%.2f", this.grossSalary - totalTax));
+
+        return netSalary;
+    }
     }
 
 
