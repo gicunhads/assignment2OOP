@@ -15,7 +15,6 @@ String representation for Directors (note: all in the same line):
 <degree> <name>’s gross salary is <gross_salary> SEK per month. Dept: <department>
 */
 
-
 public class Director extends Manager {
     
     String department;
@@ -34,14 +33,16 @@ public class Director extends Manager {
 
     @Override
     public double getTax(){
+
         if (this.grossSalary < 30000) {
             return 0.10;
         } else if (this.grossSalary <= 50000) { 
             return 0.20;
         } else { 
-            return 0.30;
+            return 0.30; // fix the part tax
         }
         }
+    
     
     @Override
     public void getEmployeesInfo(){
