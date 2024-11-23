@@ -26,7 +26,7 @@ public class Manager extends Employee {
     public Manager(String ID, String name, double grossSalary, String degree){
         super(ID, name, grossSalary);     
         this.degree = degree.trim().toLowerCase(); 
-        if (!List.of("bsc", "msc", "phd").contains(degree)) {
+        if (!List.of("bsc", "msc", "phd").contains(this.degree)) {
             throw new IllegalArgumentException("Invalid degree.");
         }
         this.tax = 0.1;
