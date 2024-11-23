@@ -24,8 +24,8 @@ public class Director extends Manager {
 
     public Director(String ID, String name, double grossSalary, String degree, String department) {
         super(ID, name, grossSalary, degree);
-        this.department = department.toLowerCase();
-        if (!List.of("human resources", "technical", "business").contains(department)) {
+        this.department = department.trim().toLowerCase();
+        if (!List.of("human resources", "technical", "business").contains(this.department)) {
             throw new IllegalArgumentException("Invalid department.");
         }
         this.originalGrossSalary = grossSalary;
