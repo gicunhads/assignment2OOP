@@ -22,8 +22,6 @@ When the employee is created successfully, the company should return the message
 "Employee <ID> was registered successfully." 
 */
 
-import java.util.Locale;
-
 public class Employee {
     
     final private String ID;
@@ -50,12 +48,12 @@ public class Employee {
     }
 
     public double getGrossSalary() {
-        return Double.parseDouble(String.format(Locale.US, "%.2f", this.grossSalary)); // to return with a "." instead of ","
+        return DoubleFormat.doubleFormater(this.grossSalary); // to return with a "." instead of ","
     }
 
     public double getNetSalary(){
         double netSalary = this.grossSalary - (this.grossSalary * this.getTax());
-        return Double.parseDouble(String.format(Locale.US, "%.2f", netSalary));
+        return DoubleFormat.doubleFormater(netSalary);
     }
 
     public void getEmployeesInfo(){

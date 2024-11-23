@@ -16,7 +16,6 @@ String representation for Directors (note: all in the same line):
 */
 
 import java.util.List;
-import java.util.Locale;
 
 public class Director extends Manager {
     
@@ -72,7 +71,7 @@ public class Director extends Manager {
             totalTax = firstPartTax + secondPartTax;
         }
         
-        netSalary = Double.parseDouble(String.format(Locale.US, "%.2f", this.grossSalary - totalTax));
+        netSalary = DoubleFormat.doubleFormater(this.grossSalary - totalTax);
 
         return netSalary;
     }
