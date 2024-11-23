@@ -27,6 +27,7 @@ public class Director extends Manager {
         this.department = department.trim().toLowerCase();
         if (!List.of("human resources", "technical", "business").contains(this.department)) {
             throw new IllegalArgumentException("Invalid department.");
+            
         }
         this.originalGrossSalary = grossSalary;
         this.tax = this.getTax();

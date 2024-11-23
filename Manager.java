@@ -25,9 +25,9 @@ public class Manager extends Employee {
     //constructor 
     public Manager(String ID, String name, double grossSalary, String degree){
         super(ID, name, grossSalary);     
-        this.degree = degree.toLowerCase(); 
+        this.degree = degree.trim().toLowerCase(); 
         if (!List.of("bsc", "msc", "phd").contains(degree)) {
-            throw new IllegalArgumentException("Invalid department.");
+            throw new IllegalArgumentException("Invalid degree.");
         }
         this.tax = 0.1;
         this.originalGrossSalary = grossSalary;
