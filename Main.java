@@ -12,6 +12,10 @@ public class Main {
         
         gigi.updateSalary(66666);
         gigi.getEmployeesInfo();
+        System.out.println(tyra.getNetSalary());
+        System.out.println(tyra.getTax());
+        System.out.println(gigi.getTax());
+
 
     }
 }
