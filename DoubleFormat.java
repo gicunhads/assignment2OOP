@@ -1,4 +1,4 @@
-// to get the double into two dec places and return as a double (using ".") instead of string.
+// to get the double into two dec places and return as a double instead of string.
 
 import java.util.Locale;
 

@@ -42,11 +42,11 @@ public class Manager extends Employee {
 
     public double getBonus(){
         switch (this.getDegree()){
-            case "Bsc" -> {return 0.10;}
+            case "bsc" -> {return 0.10;}
             
-            case "Msc" ->  {return 0.20;}
+            case "msc" ->  {return 0.20;}
 
-            case "PhD" -> {return 0.35;}
+            case "phd" -> {return 0.35;}
 
             default -> throw new IllegalArgumentException("Invalid degree type");
 
