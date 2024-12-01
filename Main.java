@@ -8,14 +8,16 @@ public class Main {
         Employee tyra = new Manager("ididi2", "tyra", 50983, "BSc");
         Employee leo = new Intern("ididid3", "leo", 15000, 7);
 
+        EmployeeFactory.createEmployee("Intern", "Leo", "ididid3", 15055, 8);
+
         gigi.getEmployeesInfo();
         tyra.getEmployeesInfo();
         leo.getEmployeesInfo();
         
         gigi.updateSalary(66666);
         gigi.getEmployeesInfo();
-        leo.getGrossSalary();
-        leo.getGrossSalary();
+        leo.getNetSalary();
+        leo.getNetSalary();
         leo.getEmployeesInfo();
         System.out.println(tyra.getNetSalary());
         System.out.println(tyra.getTax());

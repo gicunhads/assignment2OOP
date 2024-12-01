@@ -86,8 +86,8 @@ import java.util.Map;
 
 public abstract class Company {
     Scanner scanner = new Scanner(System.in);
-    HashMap<String, Employee> dictEmployees; 
-    Factory employeeFactory = new Factory(); // employee factory
+    HashMap<String, Employee> dictEmployees = new HashMap<>(); 
+    EmployeeFactory employeeFactory = new EmployeeFactory(); // employee factory
     
     public abstract void removeEmployee(String id, String newName); // to get employee's id use the method this.ID();
 
