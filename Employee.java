@@ -28,7 +28,7 @@ public class Employee {
     String name;
     double grossSalary;
     double tax;
-    int GPA;
+    
 
     // constructor
     public Employee(String ID, String name, double grossSalary){
@@ -46,6 +46,10 @@ public class Employee {
     
     public double getTax(){
         return this.tax;
+    }
+
+    public String getID(){
+        return this.ID;
     }
 
     public double getGrossSalary() {
@@ -69,7 +73,4 @@ public class Employee {
         this.grossSalary = salary;
     }
 
-    public void updateGPA(int newGPA){
-        this.GPA = newGPA;
-    }
 }

@@ -12,7 +12,7 @@ double salary;
         System.out.println(String.format("Employee %s was registered successfully", ID));
     }
 
-    @Override
+    
     public void updateGPA(int newGPA){
         this.GPA = newGPA;
     }

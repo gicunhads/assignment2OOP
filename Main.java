@@ -15,7 +15,6 @@ public class Main {
         gigi.updateSalary(66666);
         gigi.getEmployeesInfo();
         leo.getGrossSalary();
-        leo.updateGPA(9);
         leo.getGrossSalary();
         leo.getEmployeesInfo();
         System.out.println(tyra.getNetSalary());
