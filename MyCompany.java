@@ -7,6 +7,13 @@ public class MyCompany extends Company {
     }
 
     @Override
+    public void addEmployee(String id){
+        
+        // code logic
+        System.out.println(String.format("Employee %s was registered successfully.", id));
+    };
+
+    @Override
     public void removeEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             dictEmployees.remove(id);
