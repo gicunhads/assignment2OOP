@@ -1,26 +1,18 @@
-
 public class EmployeeFactory {
-    public static Employee createEmployee(String employeeType, String name, String id, double grossSalary, String degree) {
-        if (employeeType.toLowerCase() == "manager") {
-            return new Manager(name, id, grossSalary, degree);
-        } else {
-            throw new IllegalArgumentException("Invalid employee type or missing arguments.");
-        }
+
+    public static Manager createManager(String name, String id, double grossSalary, String degree) {
+        return new Manager(name, id, grossSalary, degree);
     }
 
-    public static Employee createEmployee(String employeeType, String name, String id, double grossSalary, String degree, String department) {
-        if (employeeType.toLowerCase() == "director") {
-            return new Director(name, id, grossSalary, degree, department);
-        } else {
-            throw new IllegalArgumentException("Invalid employee type or missing arguments.");
-        }
+    public static Director createDirector(String name, String id, double grossSalary, String degree, String department) {
+        return new Director(name, id, grossSalary, degree, department);
     }
 
-    public static Employee createEmployee(String employeeType, String name, String id, double grossSalary, int gpa) {
-        if (employeeType.toLowerCase() == "intern") {
-            return new Intern(name, id, grossSalary, gpa);
-        } else {
-            throw new IllegalArgumentException("Invalid employee type or missing arguments.");
-        }
+    public static Intern createIntern(String name, String id, double grossSalary, int gpa) {
+        return new Intern(name, id, grossSalary, gpa);
+    }
+
+    public static Employee createRegularEmployee(String name, String id, double grossSalary) {
+        return new Employee(name, id, grossSalary);
     }
 }
