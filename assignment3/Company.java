@@ -48,7 +48,7 @@ public class Company {
         }
     }
 
-    @Override
+
     public void printEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
@@ -58,7 +58,7 @@ public class Company {
         }
     }
 
-    @Override
+
     public int getTotalNetSalary() {
         int totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
@@ -68,7 +68,7 @@ public class Company {
 
 }
 
-    @Override
+
     public String mapEachDegree() { 
         int bsc = 0;
         int msc = 0;
@@ -95,7 +95,7 @@ public class Company {
         return employeeDegreeDetails;
     }
 
-    @Override
+
     public String printAllEmployees() { 
         String allEmployees = "";
         for (Employee employee : dictEmployees.values()){
@@ -104,14 +104,14 @@ public class Company {
         return ("All registered employees:\n" + allEmployees);
     }
 
-    @Override
+
     public void updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
-    @Override
+
     public void updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
@@ -130,8 +130,7 @@ public class Company {
         }
         return dictEmployees.get(id);
     }
-    
-    @Override
+
     public String printSortedEmployees(){
         String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
         List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
