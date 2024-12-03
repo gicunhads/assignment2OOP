@@ -81,10 +81,8 @@ You must also handle errors when trying to register an employee with an ID that 
 In those cases, you should create and handle an Exception with the message: "Cannot register. ID <id> is already registered."*/
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public abstract class Company {
-    Scanner scanner = new Scanner(System.in);
     HashMap<String, Employee> dictEmployees = new HashMap<>(); 
     EmployeeFactory employeeFactory = new EmployeeFactory(); // employee factory
     
@@ -102,7 +100,7 @@ public abstract class Company {
 
     public abstract void updateName(String id, String newName);
 
-    public abstract void addEmployee(String id);
+    public abstract void addEmployee(Employee employee);
 
 }
 

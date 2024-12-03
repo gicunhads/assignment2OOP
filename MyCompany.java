@@ -7,10 +7,13 @@ public class MyCompany extends Company {
     }
 
     @Override
-    public void addEmployee(String id){
+    public void addEmployee(Employee employee){
+        if (dictEmployees.containsKey(employee.getID())) {
+            throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
+        }
+        dictEmployees.put(employee.getID(), employee);
         
-        // code logic
-        System.out.println(String.format("Employee %s was registered successfully.", id));
+        System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
     };
 
     @Override
@@ -35,12 +38,21 @@ public class MyCompany extends Company {
 
     @Override
     public int totalNetValue() {
-     //code
+        int totalNetSalary = 0;
+        for (Employee employee : dictEmployees.values()){
+            totalNetSalary += employee.getNetSalary();
     }
+    return totalNetSalary;
+
+}
 
     @Override
     public String employeeDegreeDetails() { 
-        //code
+
+        for (Employee employee : dictEmployees.values()){
+            if (employee instanceof Manager || employee instanceof Director){
+                // code
+            }
     }
 
     @Override
