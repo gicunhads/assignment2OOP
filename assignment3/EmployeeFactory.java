@@ -1,6 +1,7 @@
 package assignment3;
 public class EmployeeFactory {
 
+
     public static Manager createEmployee(String name, String id, double grossSalary, String degree)throws ValidationException {
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
