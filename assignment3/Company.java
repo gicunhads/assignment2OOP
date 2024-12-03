@@ -110,7 +110,7 @@ public class Company extends AbstractCompany {
     }
     
     @Override
-    public String getEmployeesSorted(){
+    public String printSortedEmployees(){
         String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
         List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
         sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
