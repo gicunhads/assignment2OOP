@@ -141,8 +141,25 @@ public class Company {
         }
         return sortedEmployees;
     }
-
-
+    public String promoteToDirector(empID, String degree, String department){
+        
+    }
+    public String promoteToManager(empID, String degree){
+        
+    }
+    public String promoteToIntern(empID, int GPA){
+        
+    }
+    public String updateInternGPA(empID, int GPA){
+        
+    }
+    public String updateManagerDegree(empID, String degree){
+        
+    }
+    public String updateDirectorDept(empID, String department){
+        
+    }
+    
     }
 
 
