@@ -43,10 +43,10 @@ public class Company {
                          }
                      
                          
-                         public void removeEmployee(String id) {
+                         public String removeEmployee(String id) {
                              if (dictEmployees.containsKey(id)) {
                                  dictEmployees.remove(id);
-                                 System.out.println("Employee " + id + " was successfully removed.");
+                                 return ("Employee " + id + " was successfully removed.");
                              } else {
                                  throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
                              }
