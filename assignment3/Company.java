@@ -112,17 +112,17 @@ public class Company {
     }
 
 
-    public void updateGrossSalary(String id, double newSalary) {
+    public String updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
-        System.out.println("Employee " + id + " was updated successfully.");
+        return ("Employee " + id + " was updated successfully.");
     }
 
 
-    public void updateEmployeeName(String id, String newName) {
+    public String updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
-        System.out.println("Employee " + id + " was updated successfully.");
+        return ("Employee " + id + " was updated successfully.");
     }
 
 
