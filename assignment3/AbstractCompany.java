@@ -15,7 +15,7 @@ public abstract class AbstractCompany {
 
     public abstract String mapPerDegree()();
 
-    public abstract String allEmployeeDetails();
+    public abstract String printAllEmployees();
 
     public abstract void updateSalary(String id, double newSalary); 
 
