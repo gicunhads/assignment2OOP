@@ -1,4 +1,5 @@
 import java.util.HashMap;
+package assignment3;
 
 public abstract class AbstractCompany {
     HashMap<String, Employee> dictEmployees; 

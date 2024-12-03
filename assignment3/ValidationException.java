@@ -1,3 +1,4 @@
+package assignment3;
 
 abstract class ValidationException extends Exception {
     public ValidationException(String message) {
