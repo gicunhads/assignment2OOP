@@ -1,12 +1,14 @@
 
 import java.util.*;
 
-public class Company extends AbstractCompany {
+public class Company {
+    HashMap <String, Employee> dictEmployees;
+    
     public Company() {
         this.dictEmployees = new HashMap<>();
     }
 
-    @Override
+    
     public void addEmployee(Employee employee){
         if (dictEmployees.containsKey(employee.getID())) {
             throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
@@ -16,7 +18,7 @@ public class Company extends AbstractCompany {
         System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
     }
 
-    @Override
+    
     public void removeEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             dictEmployees.remove(id);
@@ -26,7 +28,7 @@ public class Company extends AbstractCompany {
         }
     }
 
-    @Override
+   
     public void retrieveEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
@@ -36,7 +38,7 @@ public class Company extends AbstractCompany {
         }
     }
 
-    @Override
+    
     public int totalNetValue() {
         int totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
@@ -46,7 +48,7 @@ public class Company extends AbstractCompany {
 
 }
 
-    @Override
+  
     public String employeeDegreeDetails() { 
         int bsc = 0;
         int msc = 0;
@@ -73,7 +75,7 @@ public class Company extends AbstractCompany {
         return employeeDegreeDetails;
     }
 
-    @Override
+    
     public String allEmployeeDetails() { 
         String allEmployees = "";
         for (Employee employee : dictEmployees.values()){
@@ -82,26 +84,25 @@ public class Company extends AbstractCompany {
         return ("All registered employees:\n" + allEmployees);
     }
 
-    @Override
+  
     public void updateSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
-    @Override
     public void updateName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
-    @Override
+
     public void addEmployee(String employee) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
+
     public Employee findEmployeeByID(String id) {
         if (!dictEmployees.containsKey(id)) {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
@@ -109,7 +110,7 @@ public class Company extends AbstractCompany {
         return dictEmployees.get(id);
     }
     
-    @Override
+
     public String getEmployeesSorted(){
         String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
         List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
