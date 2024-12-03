@@ -23,7 +23,7 @@ public abstract class AbstractCompany {
 
     public abstract void addEmployee(String employee);
 
-    public abstract String getEmployeesSorted();
+    public abstract String printSortedEmployees();
 
     public abstract Employee findEmployeeByID(String id);
 
