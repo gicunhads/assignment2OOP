@@ -53,8 +53,8 @@ public class Director extends Manager {
     
     
     @Override
-    public void getEmployeesInfo(){
-            System.out.println(String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
+    public String getEmployeesInfo(){
+        return (String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
     }
    
     @Override

@@ -35,7 +35,7 @@ double salary;
     }
 
     @Override
-    public void getEmployeesInfo(){
-        System.out.println(String.format("%s's gross salary is %.2f SEK per month. GPA: %s", this.name, this.salary, this.GPA));
+    public String getEmployeesInfo(){
+        return (String.format("%s's gross salary is %.2f SEK per month. GPA: %s", this.name, this.salary, this.GPA));
     }
 }

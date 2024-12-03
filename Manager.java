@@ -55,8 +55,8 @@ public class Manager extends Employee {
 
 
     @Override
-    public void getEmployeesInfo(){
-        System.out.println(String.format("%s %s's gross salary is %.2f SEK per month.", this.degree, this.name, grossSalary)); // be sure it is with bonus
+    public String getEmployeesInfo(){
+        return (String.format("%s %s's gross salary is %.2f SEK per month.", this.degree, this.name, grossSalary)); // be sure it is with bonus
     }
 
     }
