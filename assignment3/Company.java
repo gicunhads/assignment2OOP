@@ -3,56 +3,60 @@ import java.util.*;
 
 public class Company {
     static EmployeeFactory factory;
-        HashMap<String, Employee> dictEmployees;
-        
-        
-        public Company() {
-            this.dictEmployees = new HashMap<>();
-            Company.factory = new EmployeeFactory();
-        }
-    
-    
-    
-        public Manager createEmployee(String name, String id, double grossSalary, String degree) throws ValidationException{
-            return factory.createEmployee(name, id, grossSalary, degree);
-        }
-        
-        public Director createEmployee(String name, String id, double grossSalary, String degree, String department) throws ValidationException {
-            return factory.createEmployee(name, id, grossSalary, degree, department);
-        }
-    
-        public static Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
-            return factory.createEmployee(name, id, grossSalary, gpa);
-    }
-
-    public static Employee createEmployee(String name, String id, double grossSalary)throws ValidationException {
-        return factory.createEmployee(name, id, grossSalary);
-    }
-
-    public void addEmployee(Employee employee){
-        if (dictEmployees.containsKey(employee.getID())) {
-            throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
-        }
-        dictEmployees.put(employee.getID(), employee);
-        
-        System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
-    }
-
-    
-    public void removeEmployee(String id) {
-        if (dictEmployees.containsKey(id)) {
-            dictEmployees.remove(id);
-            System.out.println("Employee " + id + " was successfully removed.");
-        } else {
-            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
-        }
-    }
-
-
-    public void printEmployee(String id) {
-        if (dictEmployees.containsKey(id)) {
+        static HashMap<String, Employee> dictEmployees;
+                
+                
+                public Company() {
+                    this.dictEmployees = new HashMap<>();
+                    Company.factory = new EmployeeFactory();
+                }
+            
+            
+            
+                public static String createEmployee(String name, String id, double grossSalary, String degree) throws ValidationException{
+                     factory.createEmployee(name, id, grossSalary, degree);
+                     return printEmployee(id);
+                             }
+                             
+                             public static String createEmployee(String name, String id, double grossSalary, String degree, String department) throws ValidationException {
+                                   factory.createEmployee(name, id, grossSalary, degree, department);
+                                  return printEmployee(id);
+                             }
+                         
+                             public static String createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
+                                  factory.createEmployee(name, id, grossSalary, gpa);
+                                  return printEmployee(id);
+                         }
+                     
+                             public static String createEmployee(String name, String id, double grossSalary)throws ValidationException {
+                                factory.createEmployee(name, id, grossSalary);
+                                 return printEmployee(id);
+                         }
+                     
+                         public void addEmployee(Employee employee){
+                             if (dictEmployees.containsKey(employee.getID())) {
+                                 throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
+                             }
+                             dictEmployees.put(employee.getID(), employee);
+                             
+                             System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
+                         }
+                     
+                         
+                         public void removeEmployee(String id) {
+                             if (dictEmployees.containsKey(id)) {
+                                 dictEmployees.remove(id);
+                                 System.out.println("Employee " + id + " was successfully removed.");
+                             } else {
+                                 throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+                             }
+                         }
+                     
+                     
+                         public static String printEmployee(String id) {
+                if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
-            emp.getEmployeesInfo();
+           return emp.getEmployeesInfo();
         } else {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
         }
@@ -141,23 +145,33 @@ public class Company {
         }
         return sortedEmployees;
     }
-    public String promoteToDirector(empID, String degree, String department){
+
+    
+
+    public String promoteToDirector(String empID, String degree, String department){
+        String s = "";
+        return s;
         
     }
-    public String promoteToManager(empID, String degree){
-        
+    public String promoteToManager(String empID, String degree){
+        String s = "";
+        return s;
     }
-    public String promoteToIntern(empID, int GPA){
-        
+    public String promoteToIntern(String empID, int GPA){
+        String s = "";
+        return s;
     }
-    public String updateInternGPA(empID, int GPA){
-        
+    public String updateInternGPA(String empID, int GPA){
+        String s = "";
+        return s;
     }
-    public String updateManagerDegree(empID, String degree){
-        
+    public String updateManagerDegree(String empID, String degree){
+        String s = "";
+        return s;
     }
-    public String updateDirectorDept(empID, String department){
-        
+    public String updateDirectorDept(String empID, String department){
+        String s = "";
+        return s;
     }
     
     }
