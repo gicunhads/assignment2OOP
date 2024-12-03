@@ -73,11 +73,11 @@ public class Company {
 }
 
 
-    public String mapEachDegree() { 
+    public Map<String, Integer> mapEachDegree() { 
         int bsc = 0;
         int msc = 0;
         int phd = 0;
-        String employeeDegreeDetails = "";
+        Map<String, Integer> employeeDegreeDetails = new HashMap<>;
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
                 if (manager.getDegree().equalsIgnoreCase("bsc")) {
@@ -95,8 +95,11 @@ public class Company {
                 }
             }
         }
-        employeeDegreeDetails = (String.format("\"Academic background of employees:\nBSc: => %d\nMSc: => %d\nPhD: => %d", bsc, msc, phd));
+        employeeDegreeDetails.put("BSc", bsc);
+        employeeDegreeDetails.put("MSc", msc);
+        employeeDegreeDetails.put("PhD", phd);
         return employeeDegreeDetails;
+        
     }
 
 
