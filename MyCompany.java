@@ -95,6 +95,7 @@ public class MyCompany extends Company {
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
+    @Override
     public Employee findEmployeeByID(String id) {
         if (!dictEmployees.containsKey(id)) {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
