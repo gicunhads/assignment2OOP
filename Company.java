@@ -96,6 +96,11 @@ public class Company extends AbstractCompany {
     }
 
     @Override
+    public void addEmployee(String employee) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public Employee findEmployeeByID(String id) {
         if (!dictEmployees.containsKey(id)) {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
@@ -113,11 +118,6 @@ public class Company extends AbstractCompany {
             sortedEmployees += employee.getEmployeesInfo() + "\n"; 
         }
         return sortedEmployees;
-    }
-
-    @Override
-    public void addEmployee(String employee) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
