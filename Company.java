@@ -13,7 +13,7 @@ public class Company extends AbstractCompany {
         dictEmployees.put(employee.getID(), employee);
         
         System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
-    };
+    }
 
     @Override
     public void removeEmployee(String id) {
