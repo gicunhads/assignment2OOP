@@ -83,7 +83,7 @@ public class Company extends AbstractCompany {
     }
 
     @Override
-    public void updateSalary(String id, double newSalary) {
+    public void updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
         System.out.println("Employee " + id + " was updated successfully.");
