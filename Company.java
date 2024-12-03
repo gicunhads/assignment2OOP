@@ -1,123 +1,118 @@
-/*The company begins with no Employee registered and should: i) register, 
-ii) remove, iii) retrieve, iv) update its employees, calculate the total expenses by paying 
-v) gross salaries and vi) net salaries, and, finally, vii) inform the total number of employees registered. 
-In addition, be aware of the following cases: 
+import java.util.*;
 
-When registering an employee, the company receives his/her ID, name and gross salary.
-To find an Employee in your company, you should specify his/her ID. 
-This search should be reusable when trying to remove an employee or updating his/her information. 
-In other words, the Company should operate on Employees based on their IDs.
-Remember to provide the most modular way of updating an employee’s information, 
-since two pieces of information can be updated: salary (with a double) and name (with a String). 
-In both situations, the program receives the Employee’s ID to search the employee. For example:
+public class Company extends AbstractCompany {
+    public Company() {
+        this.dictEmployees = new HashMap<>();
+    }
 
-company.updateName(String id, String newName);
-company.updateSalary(String id, double newSalary);
-Creating different types of employees
+    @Override
+    public void addEmployee(Employee employee){
+        if (dictEmployees.containsKey(employee.getID())) {
+            throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
+        }
+        dictEmployees.put(employee.getID(), employee);
+        
+        System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
+    };
 
-Remove employees to keep my payroll updated (1.4)
-To remove an employee, the user must specify the ID of the employee that should be removed.
- When trying to remove you should check whether the system contains the specified employee ID in 
- its collection of registered employees. 
+    @Override
+    public void removeEmployee(String id) {
+        if (dictEmployees.containsKey(id)) {
+            dictEmployees.remove(id);
+            System.out.println("Employee " + id + " was successfully removed.");
+        } else {
+            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+        }
+    }
 
-If the employee was successfully removed, print the message: "Employee <ID> was successfully removed.".
+    @Override
+    public void retriveEmployee(String id) {
+        if (dictEmployees.containsKey(id)) {
+            Employee emp = dictEmployees.get(id);
+            emp.getEmployeesInfo();
+        } else {
+            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+        }
+    }
 
-See an overview of all employees’ information (1.5 and 1.6)
-You should create a string with one employee per line, following the template below. 
-You should replace the <employee_string> to the specific string for each type of employee specified above.
-
-All registered employees:
-<employee_string>
-<employee_string>
-<employee_string>
-<employee_string>
-To retrieve a string of an employee, The customer then needs to specify the ID
- of the employee that it wants to get the string from. The program should then retrieve the employee as
-  specified in their respective description (above)!!
-
-Total paid in net salaries to see my expenses with employees
-Your system should print the sum of all net salaries for all employees. Similarly to all salaries, 
-the system should truncate the result of this operation in two decimal values.
-
-Retrieve employees sorted by gross salary
-We want to print a sorted list of employees by gross salary to see which employees are paid more and less than others.
- Your system should print a list of employees in ascending order based on their gross salary. Note that this should be 
- sorted based on the value of the gross salary after any bonuses. The list should follow the template below:
-
-Employees sorted by gross salary (ascending order):
-<employee_string>
-<employee_string>
-<employee_string>
-<employee_string>
-Change information of employees so we can keep their personal information updated (1.9)
-Your program should allow updates on different information of the Employee. Since each employee has 
-specific information, we listed below the options that can be changed:
-
-Regular employees (applicable to all): Can change name and gross salary.
-Manager: Can change his/her degree.
-Director: Can change his/her degree and department.
-Intern: Can change his/her GPA.
-When the update is successful, the system should print the message: “Employee <ID> was updated successfully”
-
-Show the number of employees per degree (1.10)
-Goal: print the number of employees for each degree to get an overview of the academic background of 
-my managers and directors. Your system should retrieve a string summarising the number of employees 
-registered that have: BSc., MSc and PhD. Note that this is only applicable to Managers and Directors.
- The program should print following the same template where <number> is the number of employees with the corresponding degree.
-
-Academic background of employees:
-BSc: => <number>
-MSc: => <number>
-PhD: => <number>
-If there are no employees registered with a specific degree, the corresponding row is simply not printed.
-
-Specific employee not found or not registered yet (2.1)
-You are expected to use and handle Exceptions in your code. For instance, there are multiple cases in which 
-an employee may not be found during the operation (e.g., during removal, printing, promotion, etc.). 
-To handle those cases in which a desired employee ID is not found in our system, you should create and handle an
- Exception with the following message: "Employee <ID> was not registered yet." 
-
-You must also handle errors when trying to register an employee with an ID that was already registered. 
-In those cases, you should create and handle an Exception with the message: "Cannot register. ID <id> is already registered."*/
-
-import java.util.HashMap;
-
-public abstract class Company {
-    HashMap<String, Employee> dictEmployees = new HashMap<>(); 
-    EmployeeFactory employeeFactory = new EmployeeFactory(); // employee factory
-    
-    public abstract void addEmployee(Employee employee);
-
-    public abstract void removeEmployee(String id); 
-
-    public abstract void retriveEmployee(String id);
-
-    public abstract int totalNetValue();
-
-    public abstract String employeeDegreeDetails();
-
-    public abstract String allEmployeeDetails();
-
-    public abstract void updateSalary(String id, double newSalary); 
-
-    public abstract void updateName(String id, String newName);
-
-    public abstract void addEmployee(String employee);
-
-    public abstract String getEmployeesSorted();
-
-    public abstract Employee findEmployeeByID(String id);
+    @Override
+    public int totalNetValue() {
+        int totalNetSalary = 0;
+        for (Employee employee : dictEmployees.values()){
+            totalNetSalary += employee.getNetSalary();
+    }
+    return totalNetSalary;
 
 }
 
+    @Override
+    public String employeeDegreeDetails() { 
+        int bsc = 0;
+        int msc = 0;
+        int phd = 0;
+        String employeeDegreeDetails = "";
+        for (Employee employee : dictEmployees.values()) {
+            if (employee instanceof Manager manager) {
+                if (manager.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (manager.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                }
+            } else if (employee instanceof Director director) {
+                if (director.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("phd")) {
+                    phd += 1;
+                }
+            }
+        }
+        employeeDegreeDetails = (String.format("\"Academic background of employees:\nBSc: => %d\nMSc: => %d\nPhD: => %d", bsc, msc, phd));
+        return employeeDegreeDetails;
+    }
 
+    @Override
+    public String allEmployeeDetails() { 
+        String allEmployees = "";
+        for (Employee employee : dictEmployees.values()){
+            allEmployees = employee.getEmployeesInfo() + " ";
+        }
+        return ("All registered employees:\n" + allEmployees);
+    }
 
+    @Override
+    public void updateSalary(String id, double newSalary) {
+        Employee emp = findEmployeeByID(id);
+        emp.updateSalary(newSalary);
+        System.out.println("Employee " + id + " was updated successfully.");
+    }
 
+    @Override
+    public void updateName(String id, String newName) {
+        Employee emp = findEmployeeByID(id);
+        emp.updateName(newName);
+        System.out.println("Employee " + id + " was updated successfully.");
+    }
 
+    @Override
+    public Employee findEmployeeByID(String id) {
+        if (!dictEmployees.containsKey(id)) {
+            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+        }
+        return dictEmployees.get(id);
+    }
+    
+    @Override
+    public String getEmployeesSorted(){
+        String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+        List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+        sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
 
-
-
-
-
-
+        for (Employee employee : sortedEmployeesList) {
+            sortedEmployees += employee.getEmployeesInfo() + "\n"; 
+        }
+        return sortedEmployees;
+    }
+}
 
