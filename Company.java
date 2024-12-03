@@ -114,5 +114,13 @@ public class Company extends AbstractCompany {
         }
         return sortedEmployees;
     }
-}
+
+    @Override
+    public void addEmployee(String employee) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    }
+
 

@@ -83,7 +83,7 @@ In those cases, you should create and handle an Exception with the message: "Can
 import java.util.HashMap;
 
 public abstract class AbstractCompany {
-    HashMap<String, Employee> dictEmployees = new HashMap<>(); 
+    HashMap<String, Employee> dictEmployees; 
     EmployeeFactory employeeFactory = new EmployeeFactory(); // employee factory
     
     public abstract void addEmployee(Employee employee);
