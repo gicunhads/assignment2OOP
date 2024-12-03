@@ -45,7 +45,11 @@ public class MyCompany extends Company {
 
     @Override
     public String allEmployeeDetails() { 
-        //code 
+        String allEmployees = "";
+        for (Employee employee : dictEmployees.values()){
+            allEmployees = employee.getEmployeesInfo() + " ";
+        }
+        return allEmployees;
     }
 
     @Override
