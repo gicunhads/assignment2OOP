@@ -19,7 +19,7 @@ public abstract class AbstractCompany {
 
     public abstract void updateGrossSalary(String id, double newSalary); 
 
-    public abstract void updateName(String id, String newName);
+    public abstract void updateEmployeeName(String id, String newName);
 
     public abstract void addEmployee(String employee);
 
