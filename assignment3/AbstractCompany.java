@@ -11,7 +11,7 @@ public abstract class AbstractCompany {
 
     public abstract void printEmployee(String id);
 
-    public abstract int totalNetValue();
+    public abstract int getTotalNetSalary();
 
     public abstract String employeeDegreeDetails();
 
