@@ -74,7 +74,7 @@ public class Company extends AbstractCompany {
     }
 
     @Override
-    public String allEmployeeDetails() { 
+    public String printAllEmployees() { 
         String allEmployees = "";
         for (Employee employee : dictEmployees.values()){
             allEmployees = employee.getEmployeesInfo() + " ";
