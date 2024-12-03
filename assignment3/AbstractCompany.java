@@ -17,7 +17,7 @@ public abstract class AbstractCompany {
 
     public abstract String printAllEmployees();
 
-    public abstract void updateSalary(String id, double newSalary); 
+    public abstract void updateGrossSalary(String id, double newSalary); 
 
     public abstract void updateName(String id, String newName);
 
