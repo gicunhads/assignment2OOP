@@ -90,7 +90,7 @@ public class Company extends AbstractCompany {
     }
 
     @Override
-    public void updateName(String id, String newName) {
+    public void updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
         System.out.println("Employee " + id + " was updated successfully.");
