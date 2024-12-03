@@ -48,8 +48,8 @@ public class Company {
         }
     }
 
-
-    public void retrieveEmployee(String id) {
+    @Override
+    public void printEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
             emp.getEmployeesInfo();
@@ -58,8 +58,8 @@ public class Company {
         }
     }
 
-
-    public int totalNetValue() {
+    @Override
+    public int getTotalNetSalary() {
         int totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
             totalNetSalary += employee.getNetSalary();
@@ -68,8 +68,8 @@ public class Company {
 
 }
 
-
-    public String employeeDegreeDetails() { 
+    @Override
+    public String mapEachDegree() { 
         int bsc = 0;
         int msc = 0;
         int phd = 0;
@@ -95,8 +95,8 @@ public class Company {
         return employeeDegreeDetails;
     }
 
-
-    public String allEmployeeDetails() { 
+    @Override
+    public String printAllEmployees() { 
         String allEmployees = "";
         for (Employee employee : dictEmployees.values()){
             allEmployees = employee.getEmployeesInfo() + " ";
@@ -104,14 +104,15 @@ public class Company {
         return ("All registered employees:\n" + allEmployees);
     }
 
-
-    public void updateSalary(String id, double newSalary) {
+    @Override
+    public void updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
-    public void updateName(String id, String newName) {
+    @Override
+    public void updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
         System.out.println("Employee " + id + " was updated successfully.");
@@ -130,8 +131,8 @@ public class Company {
         return dictEmployees.get(id);
     }
     
-
-    public String getEmployeesSorted(){
+    @Override
+    public String printSortedEmployees(){
         String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
         List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
         sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));

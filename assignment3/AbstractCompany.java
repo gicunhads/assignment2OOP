@@ -9,21 +9,21 @@ public abstract class AbstractCompany {
 
     public abstract void removeEmployee(String id); 
 
-    public abstract void retrieveEmployee(String id);
+    public abstract void printEmployee(String id);
 
-    public abstract int totalNetValue();
+    public abstract int getTotalNetSalary();
 
-    public abstract String employeeDegreeDetails();
+    public abstract String mapEachDegree();
 
-    public abstract String allEmployeeDetails();
+    public abstract String printAllEmployees();
 
-    public abstract void updateSalary(String id, double newSalary); 
+    public abstract void updateGrossSalary(String id, double newSalary); 
 
-    public abstract void updateName(String id, String newName);
+    public abstract void updateEmployeeName(String id, String newName);
 
     public abstract void addEmployee(String employee);
 
-    public abstract String getEmployeesSorted();
+    public abstract String printSortedEmployees();
 
     public abstract Employee findEmployeeByID(String id);
 
