@@ -37,7 +37,7 @@ public class Company extends AbstractCompany {
     }
 
     @Override
-    public int totalNetValue() {
+    public int getTotalNetSalary() {
         int totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
             totalNetSalary += employee.getNetSalary();
