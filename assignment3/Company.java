@@ -27,7 +27,7 @@ public class Company extends AbstractCompany {
     }
 
     @Override
-    public void retrieveEmployee(String id) {
+    public void printEmployee(String id) {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
             emp.getEmployeesInfo();
