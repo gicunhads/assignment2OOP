@@ -13,7 +13,7 @@ public abstract class AbstractCompany {
 
     public abstract int getTotalNetSalary();
 
-    public abstract String employeeDegreeDetails();
+    public abstract String mapPerDegree()();
 
     public abstract String allEmployeeDetails();
 
