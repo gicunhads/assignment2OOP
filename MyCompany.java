@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MyCompany extends Company {
     public MyCompany() {
@@ -48,11 +47,29 @@ public class MyCompany extends Company {
 
     @Override
     public String employeeDegreeDetails() { 
-
-        for (Employee employee : dictEmployees.values()){
-            if (employee instanceof Manager || employee instanceof Director){
-                // code
+        int bsc = 0;
+        int msc = 0;
+        int phd = 0;
+        String employeeDegreeDetails = "";
+        for (Employee employee : dictEmployees.values()) {
+            if (employee instanceof Manager manager) {
+                if (manager.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (manager.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                }
+            } else if (employee instanceof Director director) {
+                if (director.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("phd")) {
+                    phd += 1;
+                }
             }
+        }
+        employeeDegreeDetails = (String.format("\"Academic background of employees:\nBSc: => %d\nMSc: => %d\nPhD: => %d", bsc, msc, phd));
+        return employeeDegreeDetails;
     }
 
     @Override
@@ -61,7 +78,7 @@ public class MyCompany extends Company {
         for (Employee employee : dictEmployees.values()){
             allEmployees = employee.getEmployeesInfo() + " ";
         }
-        return allEmployees;
+        return ("All registered employees:\n" + allEmployees);
     }
 
     @Override
@@ -78,11 +95,23 @@ public class MyCompany extends Company {
         System.out.println("Employee " + id + " was updated successfully.");
     }
 
-    private Employee findEmployeeByID(String id) {
+    public Employee findEmployeeByID(String id) {
         if (!dictEmployees.containsKey(id)) {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
         }
         return dictEmployees.get(id);
+    }
+    
+    @Override
+    public String getEmployeesSorted(){
+        String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+        List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+        sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
+
+        for (Employee employee : sortedEmployeesList) {
+            sortedEmployees += employee.getEmployeesInfo() + "\n"; 
+        }
+        return sortedEmployees;
     }
 }
 

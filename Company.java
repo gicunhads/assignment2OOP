@@ -86,7 +86,7 @@ public abstract class Company {
     HashMap<String, Employee> dictEmployees = new HashMap<>(); 
     EmployeeFactory employeeFactory = new EmployeeFactory(); // employee factory
     
-    public abstract void removeEmployee(String id); // to get employee's id use the method this.ID();
+    public abstract void removeEmployee(String id); 
 
     public abstract void retriveEmployee(String id);
 
@@ -101,6 +101,10 @@ public abstract class Company {
     public abstract void updateName(String id, String newName);
 
     public abstract void addEmployee(Employee employee);
+
+    public abstract String getEmployeesSorted();
+
+    public abstract Employee findEmployeeByID(String id);
 
 }
 
