@@ -47,7 +47,7 @@ public class Company extends AbstractCompany {
 }
 
     @Override
-    public String employeeDegreeDetails() { 
+    public String mapPerDegree()() { 
         int bsc = 0;
         int msc = 0;
         int phd = 0;
