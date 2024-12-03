@@ -8,7 +8,7 @@ public abstract class AbstractCompany {
 
     public abstract void removeEmployee(String id); 
 
-    public abstract void retriveEmployee(String id);
+    public abstract void retrieveEmployee(String id);
 
     public abstract int totalNetValue();
 
