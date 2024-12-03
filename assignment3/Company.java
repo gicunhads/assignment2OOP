@@ -128,25 +128,29 @@ public class Company {
     }
 
 
-    public Employee findEmployeeByID(String id) {
-        if (!dictEmployees.containsKey(id)) {
-            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+    public static Employee findEmployeeByID(String id) {
+            if (!dictEmployees.containsKey(id)) {
+                throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+            }
+            return dictEmployees.get(id);
         }
-        return dictEmployees.get(id);
-    }
-
-    public String printSortedEmployees(){
-        String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
-        List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
-        sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
-
-        for (Employee employee : sortedEmployeesList) {
-            sortedEmployees += employee.getEmployeesInfo() + "\n"; 
-        }
-        return sortedEmployees;
-    }
-
     
+        public String printSortedEmployees(){
+            String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+            List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+            sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
+    
+            for (Employee employee : sortedEmployeesList) {
+                sortedEmployees += employee.getEmployeesInfo() + "\n"; 
+            }
+            return sortedEmployees;
+        }
+    
+        public static double getNetSalary(String empID){
+            Employee emp = findEmployeeByID(empID);
+            return emp.getNetSalary();
+
+    }
 
     public String promoteToDirector(String empID, String degree, String department){
         String s = "";
