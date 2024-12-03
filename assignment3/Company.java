@@ -2,27 +2,27 @@ package assignment3;
 import java.util.*;
 
 public class Company {
-    EmployeeFactory factory;
-    HashMap<String, Employee> dictEmployees;
+    static EmployeeFactory factory;
+        HashMap<String, Employee> dictEmployees;
+        
+        
+        public Company() {
+            this.dictEmployees = new HashMap<>();
+            Company.factory = new EmployeeFactory();
+        }
     
     
-    public Company() {
-        this.dictEmployees = new HashMap<>();
-        this.factory = new EmployeeFactory();
-    }
-
-
-
-    public Manager createEmployee(String name, String id, double grossSalary, String degree) throws ValidationException{
-        return factory.createEmployee(name, id, grossSalary, degree);
-    }
     
-    public Director createEmployee(String name, String id, double grossSalary, String degree, String department) throws ValidationException {
-        return factory.createEmployee(name, id, grossSalary, degree, department);
-    }
-
-    public static Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
-        return factory.createEmployee(name, id, grossSalary, gpa);
+        public Manager createEmployee(String name, String id, double grossSalary, String degree) throws ValidationException{
+            return factory.createEmployee(name, id, grossSalary, degree);
+        }
+        
+        public Director createEmployee(String name, String id, double grossSalary, String degree, String department) throws ValidationException {
+            return factory.createEmployee(name, id, grossSalary, degree, department);
+        }
+    
+        public static Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
+            return factory.createEmployee(name, id, grossSalary, gpa);
     }
 
     public static Employee createEmployee(String name, String id, double grossSalary)throws ValidationException {
