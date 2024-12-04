@@ -27,7 +27,7 @@ double salary;
             continue;
 
         } else if (8 <= GPA && GPA <= 10) {
-            this.grossSalary += 1000);
+            this.grossSalary += 1000;
         }
         else {
             System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
