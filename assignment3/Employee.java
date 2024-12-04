@@ -39,9 +39,10 @@ public class Employee {
         return DoubleFormat.doubleFormater(netSalary);
     }
 
-    public String getEmployeesInfo(){
-        return (String.format("%s's gross salary is %.2f SEK per month.", this.name, this.grossSalary));
+    public String getEmployeesInfo() {
+        return String.format("%s's gross salary is %.2f SEK per month.", this.name, getGrossSalary());
     }
+    
 
     public void updateName(String name){
         this.name = name;
