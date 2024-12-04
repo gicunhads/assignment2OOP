@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Company {
     static EmployeeFactory factory;
-    private HashMap<String, Employee> dictEmployees = new HashMap<>();
+    private LinkedHashMap<String, Employee> dictEmployees = new LinkedHashMap<>();
 
 
     public Company() {
