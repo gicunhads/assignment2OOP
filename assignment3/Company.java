@@ -109,13 +109,14 @@ public class Company {
     }
 
 
-    public String printAllEmployees() { 
-        String allEmployees = "";
-        for (Employee employee : dictEmployees.values()){
-            allEmployees = employee.getEmployeesInfo() + " ";
+    public String printAllEmployees() {
+        StringBuilder allEmployees = new StringBuilder();
+        for (Employee employee : dictEmployees.values()) {
+            allEmployees.append(employee.getEmployeesInfo()).append("\n");
         }
-        return ("All registered employees:\n" + allEmployees);
+        return "All registered employees:\n" + allEmployees.toString();
     }
+    
 
 
     public String updateGrossSalary(String id, double newSalary) {
