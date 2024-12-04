@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Company {
     static EmployeeFactory factory;
-    private static HashMap<String, Employee> dictEmployees = new HashMap<>();
+    private HashMap<String, Employee> dictEmployees = new HashMap<>();
                       
                          
                          public Company() {
@@ -58,7 +58,7 @@ public class Company {
                          }
                      
                      
-                         public static String printEmployee(String id) {
+                         public String printEmployee(String id) {
                 if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
            return emp.getEmployeesInfo();
@@ -137,7 +137,7 @@ public class Company {
     }
 
 
-    public static Employee findEmployeeByID(String id) {
+    public  Employee findEmployeeByID(String id) {
             if (!dictEmployees.containsKey(id)) {
                 throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
             }
@@ -155,7 +155,7 @@ public class Company {
             return sortedEmployees;
         }
     
-        public static double getNetSalary(String empID){
+        public  double getNetSalary(String empID){
             Employee emp = findEmployeeByID(empID);
             return emp.getNetSalary();
 
