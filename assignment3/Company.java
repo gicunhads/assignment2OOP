@@ -128,7 +128,7 @@ public class Company {
     public String updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
-        return ("Employee " + id + " was updated successfully.");
+        return ("Employee " + id + " was updated successfully");
     }
 
 
