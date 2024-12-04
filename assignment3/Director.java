@@ -61,7 +61,7 @@ public class Director extends Manager {
         
         
         return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
-            degreeFormatted, this.name, this.grossSalary, departmentFormatted);
+            degreeFormatted, this.name, DoubleFormat.doubleFormater(this.grossSalary), departmentFormatted);
     }
    
 

@@ -49,7 +49,7 @@ public class Manager extends Employee {
         } else if (this.degree.equalsIgnoreCase("bsc")) {
             degreeFormatted = "BSc";
         }
-        return (String.format("%s %s's gross salary is %.2f SEK per month.", degreeFormatted, this.name, grossSalary)); // be sure it is with bonus
+        return (String.format("%s %s's gross salary is %.2f SEK per month.", degreeFormatted, this.name, getGrossSalary())); // be sure it is with bonus
     }
 
 }
