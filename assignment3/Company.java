@@ -121,7 +121,7 @@ public class Company {
     public String updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
-        return ("Employee " + id + " was updated successfully.");
+        return ("Employee " + id + " was updated successfully");
     }
 
 
