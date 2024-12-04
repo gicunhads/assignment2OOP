@@ -68,8 +68,8 @@ public class Company {
     }
 
 
-    public int getTotalNetSalary() {
-        int totalNetSalary = 0;
+    public double getTotalNetSalary() {
+        double totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
             totalNetSalary += employee.getNetSalary();
     }
