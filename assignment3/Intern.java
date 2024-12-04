@@ -23,7 +23,7 @@ public class Intern extends Employee {
         } else if (5 <= GPA && GPA < 8) {
             return this.grossSalary; // Full salary
         } else if (8 <= GPA && GPA <= 10) {
-            return this.grossSalary + 1000; // Bonus for high GPA
+            return DoubleFormat.doubleFormater(this.grossSalary + 1000); // Bonus for high GPA case
         } else {
             System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
             return -1;
