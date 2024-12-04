@@ -38,9 +38,32 @@ public class Director extends Manager {
 
 
     @Override
-    public String getEmployeesInfo(){
-        return (String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
+    public String getEmployeesInfo() {
+        String degreeFormatted = "";
+        
+        if (this.degree.equalsIgnoreCase("phd")) {
+            degreeFormatted = "PhD";
+        } else if (this.degree.equalsIgnoreCase("msc")) {
+            degreeFormatted = "MSc";
+        } else if (this.degree.equalsIgnoreCase("bsc")) {
+            degreeFormatted = "BSc";
+        }
+        
+       
+        String departmentFormatted = this.department;
+        if (departmentFormatted != null) {if (this.department.equalsIgnoreCase("human resources")){
+            departmentFormatted = "Human Resources";
+        } else if (this.department.equalsIgnoreCase("technical")){
+            departmentFormatted = "Technical";
+        }  else if (this.department.equalsIgnoreCase("business")){
+            departmentFormatted = "Business";
+        } }
+        
+        
+        return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
+            degreeFormatted, this.name, this.grossSalary, departmentFormatted);
     }
+   
 
     @Override
     public double getNetSalary() {
