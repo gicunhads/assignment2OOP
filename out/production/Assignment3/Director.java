@@ -39,6 +39,7 @@ public class Director extends Manager {
     @Override
     public String getEmployeesInfo() {
         String degreeFormatted = "";
+        
         if (this.degree.equalsIgnoreCase("phd")) {
             degreeFormatted = "PhD";
         } else if (this.degree.equalsIgnoreCase("msc")) {
@@ -46,8 +47,20 @@ public class Director extends Manager {
         } else if (this.degree.equalsIgnoreCase("bsc")) {
             degreeFormatted = "BSc";
         }
+        
+       
+        String departmentFormatted = this.department;
+        if (departmentFormatted != null) {if (this.department.equalsIgnoreCase("human resources")){
+            departmentFormatted = "Human Resources";
+        }} else if (departmentFormatted != null) {if (this.department.equalsIgnoreCase("technical")){
+            departmentFormatted = "Technical";
+        } } else if (departmentFormatted != null) {if (this.department.equalsIgnoreCase("business")){
+            departmentFormatted = "Business";
+        } } 
+        
+        
         return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
-        degreeFormatted, this.name, this.grossSalary, this.department);
+            degreeFormatted, this.name, this.grossSalary, departmentFormatted);
     }
    
     @Override
