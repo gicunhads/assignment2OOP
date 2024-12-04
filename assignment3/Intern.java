@@ -20,20 +20,20 @@ double salary;
     }
 
     @Override
-    public double getNetSalary() {
+    public double getGrossSalary() {
         if (0 <= GPA && GPA < 5) {
-            this.salary = 0;
+            this.grossSalary = 0;
         } else if (5 <= GPA && GPA < 8) {
-            this.salary = this.grossSalary;
+            continue;
 
         } else if (8 <= GPA && GPA <= 10) {
-            this.salary = (this.grossSalary + 1000);
+            this.grossSalary = (this.grossSalary + 1000);
         }
         else {
             System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
             return -1;
         }
-        return this.salary;
+        return this.grossSalary;
     }
 
     @Override
