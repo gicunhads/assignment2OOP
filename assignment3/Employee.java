@@ -40,7 +40,7 @@ public class Employee {
     }
 
     public String getEmployeesInfo() {
-        return String.format("%s's gross salary is %.2f SEK per month.", this.name, getGrossSalary());
+        return String.format("Employee %s gross salary is %.2f SEK per month.", this.name, getGrossSalary());
     }
     
 
