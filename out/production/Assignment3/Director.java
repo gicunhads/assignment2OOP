@@ -16,6 +16,7 @@ public class Director extends Manager {
         this.originalGrossSalary = grossSalary;
         this.tax = this.getTax();
         this.grossSalary = (grossSalary * (1 + this.getBonus())+ 5000);
+
         
         System.out.println(String.format("Director %s was registered successfully", ID));
     }
@@ -37,9 +38,17 @@ public class Director extends Manager {
     
     @Override
     public String getEmployeesInfo() {
+        String degreeFormatted = "";
         String departmentFormatted = this.department.substring(0, 1).toUpperCase() + this.department.substring(1);
+        if (this.degree.equalsIgnoreCase("phd")) {
+            degreeFormatted = "PhD";
+        } else if (this.degree.equalsIgnoreCase("msc")) {
+            degreeFormatted = "MSc";
+        } else if (this.degree.equalsIgnoreCase("bsc")) {
+            degreeFormatted = "BSc";
+        }
         return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
-                this.degree, this.name, this.grossSalary, departmentFormatted);
+        degreeFormatted, this.name, this.grossSalary, departmentFormatted);
     }
    
     @Override
