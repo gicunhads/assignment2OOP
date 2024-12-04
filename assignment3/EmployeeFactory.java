@@ -2,11 +2,7 @@ package assignment3;
 public class EmployeeFactory {
 
 
-<<<<<<< Updated upstream
     public Manager createEmployee(String name, String id, double grossSalary, String degree)throws ValidationException {
-=======
-    public static Manager createEmployee(String id, String name, double grossSalary, String degree)throws ValidationException {
->>>>>>> Stashed changes
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
@@ -33,11 +29,7 @@ public class EmployeeFactory {
         return director;
     }
 
-<<<<<<< Updated upstream
     public Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
-=======
-    public static Intern createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
->>>>>>> Stashed changes
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
@@ -51,11 +43,7 @@ public class EmployeeFactory {
         return intern;
     }
 
-<<<<<<< Updated upstream
     public Employee createEmployee(String name, String id, double grossSalary)throws ValidationException {
-=======
-    public static Employee createEmployee(String id, String name, double grossSalary)throws ValidationException {
->>>>>>> Stashed changes
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
