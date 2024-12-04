@@ -52,4 +52,9 @@ public class Manager extends Employee {
         return (String.format("%s %s's gross salary is %.2f SEK per month.", degreeFormatted, this.name, getGrossSalary())); // be sure it is with bonus
     }
 
+    public void setDegree(String degree){
+        this.degree = degree;
+    }
+    
+    
 }

@@ -84,6 +84,12 @@ public class Director extends Manager {
 
         return netSalary;
     }
+
+    public void setDepartment(String department){
+        this.department = department;
+    }
+    
+    
 }
 
 

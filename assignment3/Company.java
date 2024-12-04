@@ -165,25 +165,114 @@ public class Company {
     }
 
     public String promoteToDirector(String empID, String degree, String department){
+        Employee emp = findEmployeeByID(empID);
+    
+    if (emp instanceof Manager) {
         
-        return ("Employee " + empID + " was updated successfully");
+        Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);  
+        
+        dictEmployees.put(empID, director);  
+        
+        return "Employee " + empID + " was updated successfully";
+    } else {
+        return "Employee " + empID + " is not eligible for promotion to Director";
+    }
 
     }
     public String promoteToManager(String empID, String degree){
+
+        Employee emp = findEmployeeByID(empID);
+    
+        if (emp instanceof Employee) {
+        // Promote the Employee to Manager, assuming basic salary is set
+        Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);  
+        dictEmployees.put(empID, manager);
+
         return ("Employee " + empID + " was updated successfully");
+    }    
+        return "Employee " + empID + " is not eligible for promotion to Manager";
     }
+
+
     public String promoteToIntern(String empID, int GPA){
+        Employee emp = findEmployeeByID(empID);
+    
+    if (emp instanceof Employee) {
+       
+        Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);  // Assuming Intern constructor takes name, salary, and GPA
+        
+        
+        dictEmployees.put(empID, intern);  
+        
         return ("Employee " + empID + " was updated successfully");
+    } else 
+        return  ("Employee " + empID + " is not eligible for promotion to Intern");
+
     }
+
+
+
+
+
     public String updateInternGPA(String empID, int GPA){
         return ("Employee " + empID + " was updated successfully");
     }
+
+
+
+    
     public String updateManagerDegree(String empID, String degree){
-        return ("Employee " + empID + " was updated successfully");
-    }
+        Employee emp = findEmployeeByID(empID);
+    
+        if (emp instanceof Manager) {
+            Manager manager = (Manager) emp; // Casting to Manager
+            double initialSalary = emp.getGrossSalary();  
+            
+            manager.setDegree(degree); 
+            
+           
+            if (degree.equals("BSc")) {
+                manager.updateSalary(initialSalary * 1.10); 
+            } else if (degree.equals("MSc")) {
+                manager.updateSalary(initialSalary * 1.20); 
+            } else if (degree.equals("PhD")) {
+                manager.updateSalary(initialSalary * 1.35); 
+            }
+        }
+    
+        return "Employee " + empID + " was updated successfully";}
+
+
     public String updateDirectorDept(String empID, String department){
-        return ("Employee " + empID + " was updated successfully");
-    }
+        Employee emp = findEmployeeByID(empID);
+    
+        if (emp instanceof Director) {
+            Director director = (Director) emp; 
+            
+          
+            director.setDepartment(department);
+    
+            double initialSalary = emp.getGrossSalary(); 
+            
+        
+            director.updateSalary(initialSalary + 5000);
+    
+            double totalSalary = emp.getGrossSalary(); 
+            double tax = 0.0;
+            
+          
+            if (totalSalary < 30000) {
+                tax = totalSalary * 0.10;
+            } else if (totalSalary <= 50000) {
+                tax = totalSalary * 0.20;
+            } else {
+                tax = (30000 * 0.20) + ((totalSalary - 30000) * 0.40);
+            }
+    
+            director.updateSalary(totalSalary - tax);
+        }
+    
+        return "Employee " + empID + " was updated successfully";}
     
     
 }
