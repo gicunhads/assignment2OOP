@@ -21,7 +21,7 @@ public class Company {
                              public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
                                 Employee employee = factory.createEmployee(name, id, grossSalary, degree, department);
                                    dictEmployees.put(id, employee); 
-                                   return String.format("Employee %s was registered successfully.", id);
+                                   return String.format("Employee %s was registered successfully.", id); 
                              }
                          
                              public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
