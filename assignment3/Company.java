@@ -109,12 +109,15 @@ public class Company {
 
 
     public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder();
-        for (Employee employee : dictEmployees.values()) {
-            allEmployees.append(employee.getEmployeesInfo()).append("\n");
-        }
-        return "All registered employees:\n" + allEmployees.toString();
+        StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
+    List<Employee> sortedEmployees = new ArrayList<>(dictEmployees.values());
+    sortedEmployees.sort(Comparator.comparing(Employee::getName)); 
+
+    for (Employee employee : sortedEmployees) {
+        allEmployees.append(employee.getEmployeesInfo()).append("\n");
     }
+
+    return allEmployees.toString().trim();}
 
 
 
