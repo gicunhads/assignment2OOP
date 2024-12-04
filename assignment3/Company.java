@@ -12,26 +12,46 @@ public class Company {
                      
                      
                      
+<<<<<<< Updated upstream
                          public  String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
                               Employee employee = factory.createEmployee(name, id, grossSalary, degree);
+=======
+                         public static String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
+                              Employee employee = factory.createEmployee(id, name, grossSalary, degree);
+>>>>>>> Stashed changes
                               dictEmployees.put(id, employee); 
                      return printEmployee(id);
                              }
                              
+<<<<<<< Updated upstream
                              public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
                                 Employee employee = factory.createEmployee(name, id, grossSalary, degree, department);
+=======
+                             public static String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
+                                Employee employee = factory.createEmployee(id, name, grossSalary, degree, department);
+>>>>>>> Stashed changes
                                    dictEmployees.put(id, employee); 
                                   return printEmployee(id);
                              }
                          
+<<<<<<< Updated upstream
                              public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
                                 Employee employee = factory.createEmployee(name, id, grossSalary, gpa);
+=======
+                             public static String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
+                                Employee employee = factory.createEmployee(id, name, grossSalary, gpa);
+>>>>>>> Stashed changes
                                   dictEmployees.put(id, employee); 
                                   return printEmployee(id);
                          }
                      
+<<<<<<< Updated upstream
                          public  String createEmployee(String id, String name, double grossSalary) throws ValidationException {
                             Employee employee = factory.createEmployee(name, id, grossSalary);
+=======
+                         public static String createEmployee(String id, String name, double grossSalary) throws ValidationException {
+                            Employee employee = factory.createEmployee(id, name, grossSalary);
+>>>>>>> Stashed changes
                             dictEmployees.put(id, employee); 
                             return printEmployee(id);
                         }
