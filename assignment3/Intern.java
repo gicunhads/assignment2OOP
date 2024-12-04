@@ -18,11 +18,11 @@ public class Intern extends Employee {
 
     @Override
     public double getNetSalary() {
-        if (0 <= GPA && GPA < 5) {
+        if (0 <= GPA && GPA <= 5) {
             return 0; // No salary for GPA < 5
-        } else if (5 <= GPA && GPA < 8) {
+        } else if (5 < GPA && GPA <= 8) {
             return this.grossSalary; // Full salary
-        } else if (8 <= GPA && GPA <= 10) {
+        } else if (8 < GPA && GPA <= 10) {
             return DoubleFormat.doubleFormater(this.grossSalary + 1000); // Bonus for high GPA case
         } else {
             System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
