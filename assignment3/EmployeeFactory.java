@@ -15,7 +15,7 @@ public class EmployeeFactory {
 
     }
 
-    public static Director createEmployee(String id, String name, double grossSalary, String degree, String department)throws ValidationException {
+    public  Director createEmployee(String id, String name, double grossSalary, String degree, String department)throws ValidationException {
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
