@@ -32,6 +32,8 @@ public class Intern extends Employee {
 
     @Override
     public String getEmployeesInfo() {
-        return String.format("%s's gross salary is %.2f SEK per month. GPA: %s", this.name, this.getNetSalary(), this.GPA);
+        return String.format("%s's gross salary is %.2f SEK per month. GPA: %d",
+                     this.name, DoubleFormat.doubleFormater(this.grossSalary), this.GPA);
+
     }
 }
