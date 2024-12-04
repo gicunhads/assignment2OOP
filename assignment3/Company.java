@@ -34,7 +34,7 @@ public class Company {
                          public static String createEmployee(String id, String name, double grossSalary) throws ValidationException {
                             Employee employee = factory.createEmployee(name, id, grossSalary);
                             dictEmployees.put(id, employee); 
-                            return "Employee " + id + " was registered successfully.";
+                            return printEmployee(id);
                         }
                         
                          }
