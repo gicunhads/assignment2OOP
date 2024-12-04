@@ -8,7 +8,7 @@ double salary;
     public Intern (String ID, String name, double grossSalary, int GPA) {
         super(ID, name, grossSalary);
         this.name = name;
-        this.grossSalary = getNetSalary();
+        this.grossSalary = getGrossSalary();
         this.GPA = GPA;
 
         System.out.println(String.format("Employee %s was registered successfully", ID));
