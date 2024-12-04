@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e79dfa97-b0d9-400b-a6b7-1dc6710ede43" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/Director.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/Director.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/DoubleFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/DoubleFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/EmployeeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/EmployeeFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assignment3/Intern.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/Intern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment3/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3/ValidationException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +31,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/assignment3/Intern.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -35,22 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/SEM/Year One/OOP/assignment2OOP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/SEM/Year One/OOP/assignment2OOP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="assignment2OOP" />
@@ -88,7 +99,8 @@
       <workItem from="1732896764228" duration="12366000" />
       <workItem from="1733063260820" duration="16612000" />
       <workItem from="1733240553193" duration="1237000" />
-      <workItem from="1733326597214" duration="2738000" />
+      <workItem from="1733326597214" duration="5824000" />
+      <workItem from="1733332490076" duration="535000" />
     </task>
     <servers />
   </component>

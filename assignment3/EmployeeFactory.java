@@ -11,11 +11,11 @@ public class EmployeeFactory {
         }
         Manager manager = new Manager(name, id, grossSalary, degree);
         return manager;
-       
-        
+
+
     }
 
-    public  Director createEmployee(String id, String name, double grossSalary, String degree, String department)throws ValidationException {
+    public static Director createEmployee(String id, String name, double grossSalary, String degree, String department)throws ValidationException {
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }

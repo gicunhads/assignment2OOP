@@ -1,15 +1,15 @@
 package assignment3;
 import java.util.List;
 
-public class Manager extends Employee {    
+public class Manager extends Employee {
 
     String degree;
-    double originalGrossSalary; 
-    
+    double originalGrossSalary;
+
     //constructor 
     public Manager(String ID, String name, double grossSalary, String degree){
-        super(ID, name, grossSalary);     
-        this.degree = degree.trim().toLowerCase(); 
+        super(ID, name, grossSalary);
+        this.degree = degree.trim().toLowerCase();
         if (!List.of("bsc", "msc", "phd").contains(this.degree)) {
             throw new IllegalArgumentException("Invalid degree.");
         }
@@ -27,7 +27,7 @@ public class Manager extends Employee {
     public double getBonus(){
         switch (this.getDegree()){
             case "bsc" -> {return 0.10;}
-            
+
             case "msc" ->  {return 0.20;}
 
             case "phd" -> {return 0.35;}
@@ -43,8 +43,4 @@ public class Manager extends Employee {
         return (String.format("%s %s's gross salary is %.2f SEK per month.", this.degree, this.name, grossSalary)); // be sure it is with bonus
     }
 
-    }
-    
-
-
-
+}

@@ -4,64 +4,64 @@ import java.util.*;
 public class Company {
     static EmployeeFactory factory;
     private HashMap<String, Employee> dictEmployees = new HashMap<>();
-                      
-                         
-                         public Company() {
-                             Company.factory = new EmployeeFactory();
-                         }
-                     
-                     
-                     
-                         public  String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
-                              Employee employee = factory.createEmployee(name, id, grossSalary, degree);
-                              dictEmployees.put(id, employee); 
-                     return String.format("Employee %s was registered successfully.", id);
-                             }
-                             
-                             public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
-                                Employee employee = factory.createEmployee(name, id, grossSalary, degree, department);
-                                   dictEmployees.put(id, employee); 
-                                   return String.format("Employee %s was registered successfully.", id); 
-                             }
-                         
-                             public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
-                                Employee employee = factory.createEmployee(name, id, grossSalary, gpa);
-                                  dictEmployees.put(id, employee); 
-                                  return String.format("Employee %s was registered successfully.", id);
-                         }
-                     
-                         public  String createEmployee(String id, String name, double grossSalary) throws ValidationException {
-                            Employee employee = factory.createEmployee(name, id, grossSalary);
-                            dictEmployees.put(id, employee); 
-                            return String.format("Employee %s was registered successfully.", id);
-                        }
-                        
-                         
-                     
-                         public void addEmployee(Employee employee){
-                             if (dictEmployees.containsKey(employee.getID())) {
-                                 throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
-                             }
-                             dictEmployees.put(employee.getID(), employee);
-                             
-                             System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
-                         }
-                     
-                         
-                         public String removeEmployee(String id) {
-                             if (dictEmployees.containsKey(id)) {
-                                 dictEmployees.remove(id);
-                                 return ("Employee " + id + " was successfully removed.");
-                             } else {
-                                 throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
-                             }
-                         }
-                     
-                     
-                         public String printEmployee(String id) {
-                if (dictEmployees.containsKey(id)) {
+
+
+    public Company() {
+        Company.factory = new EmployeeFactory();
+    }
+
+
+
+    public  String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
+        Employee employee = factory.createEmployee(name, id, grossSalary, degree);
+        dictEmployees.put(id, employee);
+        return String.format("Employee %s was registered successfully.", id);
+    }
+
+    public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
+        Employee employee = factory.createEmployee(name, id, grossSalary, degree, department);
+        dictEmployees.put(id, employee);
+        return String.format("Employee %s was registered successfully.", id);
+    }
+
+    public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
+        Employee employee = factory.createEmployee(name, id, grossSalary, gpa);
+        dictEmployees.put(id, employee);
+        return String.format("Employee %s was registered successfully.", id);
+    }
+
+    public  String createEmployee(String id, String name, double grossSalary) throws ValidationException {
+        Employee employee = factory.createEmployee(name, id, grossSalary);
+        dictEmployees.put(id, employee);
+        return String.format("Employee %s was registered successfully.", id);
+    }
+
+
+
+    public void addEmployee(Employee employee){
+        if (dictEmployees.containsKey(employee.getID())) {
+            throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
+        }
+        dictEmployees.put(employee.getID(), employee);
+
+        System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
+    }
+
+
+    public String removeEmployee(String id) {
+        if (dictEmployees.containsKey(id)) {
+            dictEmployees.remove(id);
+            return ("Employee " + id + " was successfully removed.");
+        } else {
+            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+        }
+    }
+
+
+    public String printEmployee(String id) {
+        if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
-           return emp.getEmployeesInfo();
+            return emp.getEmployeesInfo();
         } else {
             throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
         }
@@ -72,13 +72,13 @@ public class Company {
         double totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
             totalNetSalary += employee.getNetSalary();
+        }
+        return totalNetSalary;
+
     }
-    return totalNetSalary;
-
-}
 
 
-    public Map<String, Integer> mapEachDegree() { 
+    public Map<String, Integer> mapEachDegree() {
         int bsc = 0;
         int msc = 0;
         int phd = 0;
@@ -104,7 +104,7 @@ public class Company {
         employeeDegreeDetails.put("MSc", msc);
         employeeDegreeDetails.put("PhD", phd);
         return employeeDegreeDetails;
-        
+
     }
 
 
@@ -115,20 +115,20 @@ public class Company {
         }
         return "All registered employees:\n" + allEmployees.toString();
     }
-    
+
 
 
     public String updateGrossSalary(String id, double newSalary) {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
-        return ("Employee " + id + " was updated successfully");
+        return ("Employee " + id + " was updated successfully.");
     }
 
 
     public String updateEmployeeName(String id, String newName) {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
-        return ("Employee " + id + " was updated successfully");
+        return ("Employee " + id + " was updated successfully.");
     }
 
 
@@ -138,33 +138,33 @@ public class Company {
 
 
     public  Employee findEmployeeByID(String id) {
-            if (!dictEmployees.containsKey(id)) {
-                throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
-            }
-            return dictEmployees.get(id);
+        if (!dictEmployees.containsKey(id)) {
+            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
         }
-    
-        public String printSortedEmployees(){
-            String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
-            List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
-            sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
-    
-            for (Employee employee : sortedEmployeesList) {
-                sortedEmployees += employee.getEmployeesInfo() + "\n"; 
-            }
-            return sortedEmployees;
+        return dictEmployees.get(id);
+    }
+
+    public String printSortedEmployees(){
+        String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+        List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+        sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
+
+        for (Employee employee : sortedEmployeesList) {
+            sortedEmployees += employee.getEmployeesInfo() + "\n";
         }
-    
-        public  double getNetSalary(String empID){
-            Employee emp = findEmployeeByID(empID);
-            return emp.getNetSalary();
+        return sortedEmployees;
+    }
+
+    public  double getNetSalary(String empID){
+        Employee emp = findEmployeeByID(empID);
+        return emp.getNetSalary();
 
     }
 
     public String promoteToDirector(String empID, String degree, String department){
         String s = "";
         return s;
-        
+
     }
     public String promoteToManager(String empID, String degree){
         String s = "";
@@ -187,6 +187,3 @@ public class Company {
         return s;
     }
 }
-    
-
-
