@@ -4,10 +4,7 @@ import java.util.*;
 public class Company {
     static EmployeeFactory factory;
     private static HashMap<String, Employee> dictEmployees = new HashMap<>();
-
-   
-    
-                         
+                      
                          
                          public Company() {
                              Company.factory = new EmployeeFactory();
