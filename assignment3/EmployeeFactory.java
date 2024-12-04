@@ -36,7 +36,7 @@ public class EmployeeFactory {
         if (grossSalary < 0) {
             throw new InvalidSalaryException(grossSalary);
         }
-        if (gpa < 0 || gpa > 4) {
+        if (gpa < 0 || gpa > 10) {
             throw new InvalidGpaException(gpa);
         }
         Intern intern = new Intern(name, id, grossSalary, gpa);
