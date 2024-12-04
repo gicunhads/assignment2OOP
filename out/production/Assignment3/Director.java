@@ -35,10 +35,11 @@ public class Director extends Manager {
         }
     }
     
-    
     @Override
-    public String getEmployeesInfo(){
-        return (String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s", this.degree, this.name, grossSalary, this.department)); // be sure it is with bonus
+    public String getEmployeesInfo() {
+        String departmentFormatted = this.department.substring(0, 1).toUpperCase() + this.department.substring(1);
+        return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
+                this.degree, this.name, this.grossSalary, departmentFormatted);
     }
    
     @Override
