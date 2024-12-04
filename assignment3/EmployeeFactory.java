@@ -9,7 +9,7 @@ public class EmployeeFactory {
         if (grossSalary < 0) {
             throw new InvalidSalaryException(grossSalary);
         }
-        Manager manager = new Manager(name, id, grossSalary, degree);
+        Manager manager = new Manager(id, name, grossSalary, degree);
         return manager;
 
 
@@ -39,7 +39,7 @@ public class EmployeeFactory {
         if (gpa < 0 || gpa > 10) {
             throw new InvalidGpaException(gpa);
         }
-        Intern intern = new Intern(name, id, grossSalary, gpa);
+        Intern intern = new Intern(id, name, grossSalary, gpa);
         return intern;
     }
 
@@ -50,7 +50,7 @@ public class EmployeeFactory {
         if (grossSalary < 0) {
             throw new InvalidSalaryException(grossSalary);
         }
-        Employee employee = new Employee(name, id, grossSalary);
+        Employee employee = new Employee(id, name, grossSalary);
         return employee;
     }
 }
