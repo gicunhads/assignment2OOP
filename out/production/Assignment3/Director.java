@@ -39,7 +39,6 @@ public class Director extends Manager {
     @Override
     public String getEmployeesInfo() {
         String degreeFormatted = "";
-        String departmentFormatted = this.department.substring(0, 1).toUpperCase() + this.department.substring(1);
         if (this.degree.equalsIgnoreCase("phd")) {
             degreeFormatted = "PhD";
         } else if (this.degree.equalsIgnoreCase("msc")) {
@@ -48,7 +47,7 @@ public class Director extends Manager {
             degreeFormatted = "BSc";
         }
         return String.format("%s %s's gross salary is %.2f SEK per month. Dept: %s",
-        degreeFormatted, this.name, this.grossSalary, departmentFormatted);
+        degreeFormatted, this.name, this.grossSalary, this.department);
     }
    
     @Override
