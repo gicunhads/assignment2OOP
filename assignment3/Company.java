@@ -3,41 +3,43 @@ import java.util.*;
 
 public class Company {
     static EmployeeFactory factory;
-         static HashMap<String, Employee> dictEmployees;
+    private static HashMap<String, Employee> dictEmployees = new HashMap<>();
+
+   
+    
                          
                          
                          public Company() {
-                             this.dictEmployees = new HashMap<>();
                              Company.factory = new EmployeeFactory();
                          }
                      
                      
                      
-                         public static String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
+                         public  String createEmployee(String id, String name, double grossSalary, String degree) throws ValidationException{
                               Employee employee = factory.createEmployee(name, id, grossSalary, degree);
                               dictEmployees.put(id, employee); 
                      return printEmployee(id);
                              }
                              
-                             public static String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
+                             public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws ValidationException {
                                 Employee employee = factory.createEmployee(name, id, grossSalary, degree, department);
                                    dictEmployees.put(id, employee); 
                                   return printEmployee(id);
                              }
                          
-                             public static String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
+                             public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
                                 Employee employee = factory.createEmployee(name, id, grossSalary, gpa);
                                   dictEmployees.put(id, employee); 
                                   return printEmployee(id);
                          }
                      
-                         public static String createEmployee(String id, String name, double grossSalary) throws ValidationException {
+                         public  String createEmployee(String id, String name, double grossSalary) throws ValidationException {
                             Employee employee = factory.createEmployee(name, id, grossSalary);
                             dictEmployees.put(id, employee); 
                             return printEmployee(id);
                         }
                         
-                         }
+                         
                      
                          public void addEmployee(Employee employee){
                              if (dictEmployees.containsKey(employee.getID())) {
@@ -187,7 +189,7 @@ public class Company {
         String s = "";
         return s;
     }
+}
     
-    }
 
 

@@ -2,7 +2,7 @@ package assignment3;
 public class EmployeeFactory {
 
 
-    public static Manager createEmployee(String name, String id, double grossSalary, String degree)throws ValidationException {
+    public Manager createEmployee(String name, String id, double grossSalary, String degree)throws ValidationException {
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
@@ -29,7 +29,7 @@ public class EmployeeFactory {
         return director;
     }
 
-    public static Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
+    public Intern createEmployee(String name, String id, double grossSalary, int gpa) throws ValidationException{
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
@@ -43,7 +43,7 @@ public class EmployeeFactory {
         return intern;
     }
 
-    public static Employee createEmployee(String name, String id, double grossSalary)throws ValidationException {
+    public Employee createEmployee(String name, String id, double grossSalary)throws ValidationException {
         if (name == null || name.isEmpty()) {
             throw new InvalidEmployeeDataException(name);
         }
