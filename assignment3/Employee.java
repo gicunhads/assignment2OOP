@@ -15,7 +15,7 @@ public class Employee {
         this.grossSalary = grossSalary;
         this.tax = 0.1;
 
-        System.out.println(String.format("Employee %s was registered successfully.", this.ID)); }
+        System.out.println(String.format("Employee %s was registered successfully", this.ID)); }
 
 
     public String getName(){
