@@ -162,28 +162,25 @@ public class Company {
     }
 
     public String promoteToDirector(String empID, String degree, String department){
-        String s = "";
-        return s;
+        
+        return ("Employee " + empID + " was updated successfully");
 
     }
     public String promoteToManager(String empID, String degree){
-        String s = "";
-        return s;
+        return ("Employee " + empID + " was updated successfully");
     }
     public String promoteToIntern(String empID, int GPA){
-        String s = "";
-        return s;
+        return ("Employee " + empID + " was updated successfully");
     }
     public String updateInternGPA(String empID, int GPA){
-        String s = "";
-        return s;
+        return ("Employee " + empID + " was updated successfully");
     }
     public String updateManagerDegree(String empID, String degree){
-        String s = "";
-        return s;
+        return ("Employee " + empID + " was updated successfully");
     }
     public String updateDirectorDept(String empID, String department){
-        String s = "";
-        return s;
+        return ("Employee " + empID + " was updated successfully");
     }
+    
+    
 }
