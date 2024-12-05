@@ -326,38 +326,22 @@ public class Company {
         return "Employee " + empID + " was updated successfully";}
 
 
-    public String updateDirectorDept(String empID, String department) throws Exception{
-        Employee emp = findEmployeeByID(empID);
-    
+        public String updateDirectorDept(String empID, String department) throws Exception {
+            Employee emp = findEmployeeByID(empID);
         
-        if (emp instanceof Director) {
-        Director director = (Director) emp;
+            if (emp instanceof Director) {
+                Director director = (Director) emp;
         
-        director.setDepartment(department);  
-
-        double initialSalary = emp.getGrossSalary();  
-        double departmentBonus = 5000.00;
+                // Update department
+                director.setDepartment(department);
         
-        director.updateSalary(initialSalary + departmentBonus);  
-
-       
-        double totalSalary = emp.getGrossSalary();  
-        double tax = 0.0;
+                // Apply department bonus
+                double departmentBonus = 5000.00;
+                double initialSalary = director.getGrossSalary();
+                director.updateSalary(initialSalary + departmentBonus);
         
-        if (totalSalary < 30000) {
-            tax = totalSalary * 0.10;
-        } else if (totalSalary <= 50000) {
-            tax = totalSalary * 0.20;
-        } else {
-            tax = (30000 * 0.20) + ((totalSalary - 30000) * 0.40);
+                return "Employee " + empID + " was updated successfully";
+            }
+            return "Employee " + empID + " is not a Director";
         }
-
-    
-            director.updateSalary(totalSalary - tax);
-        }
-    
-        return "Employee " + empID + " was updated successfully";}
-    
-
-    
-}
+        
