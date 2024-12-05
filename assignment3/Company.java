@@ -199,7 +199,7 @@ public class Company {
     
     if (emp instanceof Employee) {
        
-        Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);  // Assuming Intern constructor takes name, salary, and GPA
+        Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);  
         
         
         dictEmployees.put(empID, intern);  
