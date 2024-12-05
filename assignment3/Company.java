@@ -80,52 +80,61 @@ public class Company {
 
 
     public Map<String, Integer> mapEachDegree() {
+        
         int bsc = 0;
         int msc = 0;
         int phd = 0;
+        
+       
         Map<String, Integer> employeeDegreeDetails = new HashMap<>();
-    
-      
+        
+        
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
-                if (manager.getDegree().equalsIgnoreCase("bsc")) {
+                String degree = manager.getDegree();
+                if (degree.equalsIgnoreCase("bsc")) {
                     bsc += 1;
-                } else if (manager.getDegree().equalsIgnoreCase("msc")) {
+                } else if (degree.equalsIgnoreCase("msc")) {
                     msc += 1;
                 }
             } else if (employee instanceof Director director) {
-                if (director.getDegree().equalsIgnoreCase("bsc")) {
+                String degree = director.getDegree();
+                if (degree.equalsIgnoreCase("bsc")) {
                     bsc += 1;
-                } else if (director.getDegree().equalsIgnoreCase("msc")) {
+                } else if (degree.equalsIgnoreCase("msc")) {
                     msc += 1;
-                } else if (director.getDegree().equalsIgnoreCase("phd")) {
+                } else if (degree.equalsIgnoreCase("phd")) {
                     phd += 1;
                 }
             }
         }
-    
-       
+        
+        
         if (bsc > 0) {
             employeeDegreeDetails.put("BSc", bsc);
+        } else {
+            
+            employeeDegreeDetails.put("BSc", null);  
         }
+    
         if (msc > 0) {
             employeeDegreeDetails.put("MSc", msc);
+        } else {
+            
+            employeeDegreeDetails.put("MSc", null);  
         }
+    
         if (phd > 0) {
             employeeDegreeDetails.put("PhD", phd);
+        } else {
+            
+            employeeDegreeDetails.put("PhD", null);  
         }
-
-        Iterator<Map.Entry<String, Integer>> iterator = employeeDegreeDetails.entrySet().iterator();
-        while (iterator.hasNext()) {
-         Map.Entry<String, Integer> entry = iterator.next();
-        if (entry.getValue() == 0) {
-            iterator.remove(); 
-}}
     
+       
         return employeeDegreeDetails;
-        
-
     }
+    
 
 
     public String printAllEmployees() {
@@ -209,6 +218,11 @@ public class Company {
         Employee emp = findEmployeeByID(empID);
     
         if (emp instanceof Employee) {
+
+            if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
+                throw new IllegalArgumentException("Invalid degree type");
+            }
+            
        
         Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);  
         dictEmployees.put(empID, manager);
@@ -288,6 +302,11 @@ public class Company {
                 manager.updateSalary(initialSalary * 1.35);  
             }
         }
+        if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
+            throw new IllegalArgumentException("Invalid degree type");
+        }
+        
+        
         
         return "Employee " + empID + " was updated successfully";}
 
