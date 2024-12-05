@@ -346,7 +346,7 @@ public class Company {
             director.setDepartment(department);
 
             double totalSalary = emp.getGrossSalary();
-            bonus = 5000
+            double bonus = 5000;
             
             director.updateSalary(totalSalary + bonus);
         }
