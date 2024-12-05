@@ -202,7 +202,7 @@ public class Company {
         Employee emp = findEmployeeByID(empID);
     
         if (emp instanceof Employee) {
-        // Promote the Employee to Manager, assuming basic salary is set
+       
         Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);  
         dictEmployees.put(empID, manager);
 
@@ -265,7 +265,12 @@ public class Company {
             Manager manager = (Manager) emp; 
             double initialSalary = emp.getGrossSalary();  
             
-            manager.setDegree(degree);
+            
+            String normalizedDegree = degree.trim().toLowerCase();
+            if (!List.of("bsc", "msc", "phd").contains(normalizedDegree)) {
+            return "Invalid degree type";
+        } 
+        manager.setDegree(degree);
     
             
             if (degree.equals("BSc")) {
