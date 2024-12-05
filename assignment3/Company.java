@@ -73,7 +73,7 @@ public class Company {
         for (Employee employee : dictEmployees.values()){
             totalNetSalary += employee.getNetSalary();
         }
-        return totalNetSalary;
+        return DoubleFormat.truncate(totalNetSalary);
 
     }
 

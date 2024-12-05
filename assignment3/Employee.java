@@ -31,13 +31,13 @@ public class Employee {
     }
 
     public double getGrossSalary() {
-        return DoubleFormat.doubleFormater(this.grossSalary); // to return with a "." instead of ","
+        return DoubleFormat.truncate(this.grossSalary); 
     }
 
     public double getNetSalary(){
         double taxableAmount = (this.grossSalary * this.getTax());
         double netSalary = this.grossSalary - taxableAmount;
-        return DoubleFormat.doubleFormater(netSalary);
+        return DoubleFormat.truncate(netSalary);
     }
 
     public String getEmployeesInfo() {

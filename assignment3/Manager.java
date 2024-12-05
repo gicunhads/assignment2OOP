@@ -19,7 +19,7 @@ public class Manager extends Employee {
     }
 
     public double calculateGrossSalary(double baseSalary) {
-        return baseSalary * (1 + this.getBonus());
+        return DoubleFormat.truncate(baseSalary * (1 + this.getBonus()));
     }
 
     public String getDegree(){
