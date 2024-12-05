@@ -6,8 +6,8 @@ public class Intern extends Employee {
 
     public Intern(String ID, String name, double grossSalary, int GPA) {
         super(ID, name, grossSalary); 
-        this.grossSalary = getNetSalary();
         this.GPA = GPA;
+        this.grossSalary = getNetSalary();
         
 
         System.out.println(String.format("Employee %s was registered successfully", ID));
