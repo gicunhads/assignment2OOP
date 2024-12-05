@@ -114,7 +114,12 @@ public class Company {
         if (phd > 0) {
             employeeDegreeDetails.put("PhD", phd);
         }
-
+        Iterator<Map.Entry<String, Integer>> iterator = employeeDegreeDetails.entrySet().iterator();
+        while (iterator.hasNext()) {
+         Map.Entry<String, Integer> entry = iterator.next();
+        if (entry.getValue() == 0) {
+            iterator.remove(); 
+}}
        
 
         return employeeDegreeDetails; 
