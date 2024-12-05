@@ -160,14 +160,14 @@ public class Company {
 
 
 
-    public String updateGrossSalary(String id, double newSalary) {
+    public String updateGrossSalary(String id, double newSalary) throws Exception {
         Employee emp = findEmployeeByID(id);
         emp.updateSalary(newSalary);
         return ("Employee " + id + " was updated successfully");
     }
 
 
-    public String updateEmployeeName(String id, String newName) {
+    public String updateEmployeeName(String id, String newName) throws Exception {
         Employee emp = findEmployeeByID(id);
         emp.updateName(newName);
         return ("Employee " + id + " was updated successfully");
