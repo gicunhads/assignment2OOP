@@ -226,7 +226,7 @@ public class Company {
         if (emp instanceof Employee) {
 
             if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
-                throw new IllegalArgumentException("Invalid degree type");
+                throw new Exception("Invalid degree type");
             }
             
        
