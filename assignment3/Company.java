@@ -84,6 +84,8 @@ public class Company {
         int msc = 0;
         int phd = 0;
         Map<String, Integer> employeeDegreeDetails = new HashMap<>();
+        
+
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
                 if (manager.getDegree().equalsIgnoreCase("bsc")) {
@@ -101,6 +103,7 @@ public class Company {
                 }
             }
         }
+        
         if (bsc > 0) {
             employeeDegreeDetails.put("BSc", bsc);
         }
