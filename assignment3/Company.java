@@ -120,7 +120,7 @@ public class Company {
         }
         allEmployees.append(employee.getEmployeesInfo());}
     
-        return allEmployees.toString();
+        return allEmployees.toString() + " ";
     }
 
 
