@@ -7,11 +7,11 @@ public class Director extends Manager {
     String department;
     double originalGrossSalary;
 // Constructor
-public Director(String ID, String name, double grossSalary, String degree, String department) {
+public Director(String ID, String name, double grossSalary, String degree, String department) throws Exception {
     super(ID, name, grossSalary, degree);
     this.department = department.trim().toLowerCase();
     if (!List.of("human resources", "technical", "business").contains(this.department)) {
-        throw new IllegalArgumentException("Invalid department.");
+        throw new Exception("Invalid department.");
     }
     this.grossSalary = calculateGrossSalaryWithDepartmentBonus(grossSalary);
     System.out.println(String.format("Director %s was registered successfully", ID));

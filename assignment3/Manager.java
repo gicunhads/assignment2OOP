@@ -5,11 +5,11 @@ public class Manager extends Employee {
     String degree;
     double originalGrossSalary;
     // Constructor
-    public Manager(String ID, String name, double grossSalary, String degree){
+    public Manager(String ID, String name, double grossSalary, String degree) throws Exception{
         super(ID, name, grossSalary);
         this.degree = degree.trim().toLowerCase();
         if (!List.of("bsc", "msc", "phd").contains(this.degree)) {
-            throw new IllegalArgumentException("Invalid degree.");
+            throw new Exception("Invalid degree.");
         }
         this.tax = 0.1;
 
@@ -26,12 +26,12 @@ public class Manager extends Employee {
         return this.degree;
     }
 
-    public double getBonus(){
-        switch (this.getDegree()){
+    public double getBonus() throws Exception{
+        switch (this.getDegree().toLowerCase()){
             case "bsc" -> { return 0.10; }
             case "msc" -> { return 0.20; }
             case "phd" -> { return 0.35; }
-            default -> throw new IllegalArgumentException("Invalid degree type");
+            default -> throw new Exception("Invalid degree type");
         }
     }
 
