@@ -109,22 +109,19 @@ public class Company {
 
 
     public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder("All registered employees: ");
+        StringBuilder allEmployees = new StringBuilder("All registered employees: "); 
 
-      
         boolean first = true;
         for (Employee employee : dictEmployees.values()) {
             if (!first) {
-                allEmployees.append(" "); // Add space between employees
+                allEmployees.append(" "); 
             }
-            allEmployees.append(employee.getEmployeesInfo());
+            allEmployees.append(employee.getEmployeesInfo()); 
             first = false;
         }
     
         
-        allEmployees.append(" ");
-    
-        return allEmployees.toString();
+        return allEmployees.toString().trim();
     }
 
 
