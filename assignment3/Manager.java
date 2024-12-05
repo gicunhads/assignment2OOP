@@ -42,7 +42,7 @@ public class Manager extends Employee {
         return String.format("%s %s's gross salary is %.2f SEK per month.", degreeFormatted, this.name, getGrossSalary());
     }
 
-    public void setDegree(String degree){
+    public void setDegree(String degree) throws Exception{
         this.degree = degree;
         this.grossSalary = calculateGrossSalary(this.originalGrossSalary); // Update salary after degree change
     }
