@@ -38,9 +38,9 @@ public class Company {
 
 
 
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) throws Exception{
         if (dictEmployees.containsKey(employee.getID())) {
-            throw new IllegalArgumentException("Employee " + employee.getID() + " is already registered.");
+            throw new Exception("Employee " + employee.getID() + " is already registered.");
         }
         dictEmployees.put(employee.getID(), employee);
 
@@ -48,22 +48,22 @@ public class Company {
     }
 
 
-    public String removeEmployee(String id) {
+    public String removeEmployee(String id) throws Exception {
         if (dictEmployees.containsKey(id)) {
             dictEmployees.remove(id);
             return ("Employee " + id + " was successfully removed.");
         } else {
-            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+            throw new Exception("Employee " + id + " was not registered yet.");
         }
     }
 
 
-    public String printEmployee(String id) {
+    public String printEmployee(String id) throws Exception {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
             return emp.getEmployeesInfo();
         } else {
-            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+            throw new Exception("Employee " + id + " was not registered yet.");
         }
     }
 
