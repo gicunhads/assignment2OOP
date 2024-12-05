@@ -64,6 +64,5 @@ public double getNetSalary() {
 
 public void setDepartment(String department) throws Exception{
     this.department = department;
-    this.grossSalary = calculateGrossSalaryWithDepartmentBonus(this.originalGrossSalary); // Update salary after department change
-}
+  
 }
