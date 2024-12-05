@@ -174,9 +174,7 @@ public class Company {
     }
 
 
-    public void addEmployee(String employee) throws Exception {
-        throw new Exception("Invalid degree type");
-    }
+   
 
 
     public  Employee findEmployeeByID(String id) throws Exception {
