@@ -295,7 +295,7 @@ public class Company {
             
             String normalizedDegree = degree.trim().toLowerCase();
             if (!List.of("bsc", "msc", "phd").contains(normalizedDegree)) {
-            return "Invalid degree type";
+                throw new Exception("Invalid degree type");
         } 
         manager.setDegree(degree);
     
@@ -309,7 +309,7 @@ public class Company {
             }
         }
         if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
-            throw new IllegalArgumentException("Invalid degree type");
+            throw new Exception("Invalid degree type");
         }
         
         
