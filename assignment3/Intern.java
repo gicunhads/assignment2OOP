@@ -5,7 +5,8 @@ public class Intern extends Employee {
     int GPA;
 
     public Intern(String ID, String name, double grossSalary, int GPA) {
-        super(ID, name, grossSalary); // Initialize grossSalary via the parent class
+        super(ID, name, grossSalary); 
+        this.grossSalary = getNetSalary();
         this.GPA = GPA;
         
 
