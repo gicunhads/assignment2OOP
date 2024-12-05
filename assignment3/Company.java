@@ -273,7 +273,7 @@ public class Company {
             } else if (8 < GPA && GPA <= 10) {
                 emp.updateSalary(intern.OriginalSalary  + 1000); // Bonus for high GPA case
             } else {
-                System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
+                throw new Exception("Invalid GPA value. Please enter a value between 0 and 10");
             }
   
         }
