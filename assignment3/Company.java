@@ -237,7 +237,7 @@ public class Company {
         if (emp instanceof Intern) {
             Intern intern = (Intern) emp;
             intern.updateGPA(GPA);
-            Double initialSalary = emp.getGrossSalary()
+            Double initialSalary = emp.getGrossSalary();
             double salery = intern.OriginalSalary;
 
             if (0 <= GPA && GPA <= 5) {
