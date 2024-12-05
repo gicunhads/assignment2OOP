@@ -13,7 +13,7 @@ public class Manager extends Employee {
         }
         this.tax = 0.1;
 
-        this.grossSalary = calculateGrossSalary(grossSalary); 
+        this.grossSalary = calculateGrossSalary(grossSalary);
         this.originalGrossSalary = grossSalary;
         System.out.println(String.format("Manager %s was registered successfully", ID));
     }
@@ -38,7 +38,7 @@ public class Manager extends Employee {
     @Override
     public String getEmployeesInfo(){
         String degreeFormatted = this.degree.equalsIgnoreCase("phd") ? "PhD" :
-                                this.degree.equalsIgnoreCase("msc") ? "MSc" : "BSc";
+                this.degree.equalsIgnoreCase("msc") ? "MSc" : "BSc";
         return String.format("%s %s's gross salary is %.2f SEK per month.", degreeFormatted, this.name, getGrossSalary());
     }
 
