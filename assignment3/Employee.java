@@ -31,7 +31,7 @@ public class Employee {
     }
 
     public double getGrossSalary() {
-        return DoubleFormat.truncate(this.grossSalary); 
+        return DoubleFormat.truncate(this.grossSalary);
     }
 
     public double getNetSalary(){
