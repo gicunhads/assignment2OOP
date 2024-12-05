@@ -109,7 +109,7 @@ public class Company {
 
 
     public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder("All registered employees: ");
+        StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
 
         boolean first = true; // Flag to manage spacing between employees
         for (Employee employee : dictEmployees.values()) {
