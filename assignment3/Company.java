@@ -346,9 +346,8 @@ public class Company {
             director.setDepartment(department);
 
             double totalSalary = emp.getGrossSalary();
-            double bonus = 5000;
             
-            director.updateSalary(totalSalary + bonus);
+            director.updateSalary(totalSalary + 5000);
         }
 
         return "Employee " + empID + " was updated successfully";}
