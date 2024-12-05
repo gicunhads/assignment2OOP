@@ -101,10 +101,18 @@ public class Company {
                 }
             }
         }
-        employeeDegreeDetails.put("BSc", bsc);
-        employeeDegreeDetails.put("MSc", msc);
-        employeeDegreeDetails.put("PhD", phd);
+        if (bsc > 0) {
+            employeeDegreeDetails.put("BSc", bsc);
+        }
+        if (msc > 0) {
+            employeeDegreeDetails.put("MSc", msc);
+        }
+        if (phd > 0) {
+            employeeDegreeDetails.put("PhD", phd);
+        }
+    
         return employeeDegreeDetails;
+        
 
     }
 
