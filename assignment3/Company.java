@@ -84,7 +84,6 @@ public class Company {
         int bsc = 0;
         int msc = 0;
         int phd = 0;
-        
        
         Map<String, Integer> employeeDegreeDetails = new HashMap<>();
         
@@ -93,19 +92,25 @@ public class Company {
             if (employee instanceof Manager manager) {
                 String degree = manager.getDegree();
                 if (degree.equalsIgnoreCase("bsc")) {
+                    
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
+                    
                     msc += 1;
                 }
             } else if (employee instanceof Director director) {
                 String degree = director.getDegree();
                 if (degree.equalsIgnoreCase("bsc")) {
+                    
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
+                    
                     msc += 1;
                 } else if (degree.equalsIgnoreCase("phd")) {
+                    
                     phd += 1;
-                }
+
+                } 
             }
         }
         
