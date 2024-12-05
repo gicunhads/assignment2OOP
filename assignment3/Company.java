@@ -343,5 +343,5 @@ public class Company {
                 return "Employee " + empID + " was updated successfully";
             }
             return "Employee " + empID + " is not a Director";
-        }
+        }}
         
