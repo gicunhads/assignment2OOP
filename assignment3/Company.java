@@ -111,11 +111,16 @@ public class Company {
     public String printAllEmployees() {
         StringBuilder allEmployees = new StringBuilder("All registered employees:");
         
+        boolean first = true;
         for (Employee employee : dictEmployees.values()) {
-            allEmployees.append(" ").append(employee.getEmployeesInfo());
+        if (first) {
+            first = false;
+        } else {
+            allEmployees.append(" "); 
         }
+        allEmployees.append(employee.getEmployeesInfo());}
     
-        return allEmployees.toString().trim();
+        return allEmployees.toString();
     }
 
 
