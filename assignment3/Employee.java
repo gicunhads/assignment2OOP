@@ -12,7 +12,7 @@ public class Employee {
     public Employee(String ID, String name, double grossSalary){
         this.ID = ID;
         this.name = name;
-        this.grossSalary = grossSalary;
+        this.grossSalary = DoubleFormat.truncate(grossSalary);
         this.tax = 0.1;
 
         System.out.println(String.format("Employee %s was registered successfully", this.ID)); }
