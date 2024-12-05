@@ -306,33 +306,34 @@ public class Company {
     public String updateManagerDegree(String empID, String degree) throws Exception{
         Employee emp = findEmployeeByID(empID);
     
-        if (emp instanceof Manager) {
-            Manager manager = (Manager) emp; 
-            double initialSalary = emp.getGrossSalary();  
-            
-            
-            String normalizedDegree = degree.trim().toLowerCase();
-            if (!List.of("bsc", "msc", "phd").contains(normalizedDegree)) {
-                throw new Exception("Invalid degree type");
-        } 
-        manager.setDegree(degree);
-    
-            
-            if (degree.equals("bsc")) {
-                manager.updateSalary(initialSalary * 1.10);  
-            } else if (degree.equals("msc")) {
-                manager.updateSalary(initialSalary * 1.20);  
-            } else if (degree.equals("phd")) {
-                manager.updateSalary(initialSalary * 1.35);  
-            }
-        }
-        if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
+        
+    if (emp instanceof Manager) {
+        Manager manager = (Manager) emp;
+        double initialSalary = emp.getGrossSalary();
+
+        // Normalize and validate the degree
+        String normalizedDegree = degree.trim().toLowerCase();
+        if (!List.of("bsc", "msc", "phd").contains(normalizedDegree)) {
             throw new Exception("Invalid degree type");
         }
+
+        manager.setDegree(degree);
+
+        // Update salary based on degree
+        if (degree.equalsIgnoreCase("bsc")) {
+            emp.updateSalary(initialSalary * 1.10);
+        } else if (degree.equalsIgnoreCase("msc")) {
+            emp.updateSalary(initialSalary * 1.20);
+        } else if (degree.equalsIgnoreCase("phd")) {
+            emp.updateSalary(initialSalary * 1.35);
+        }
+    }
+
+    return "Employee " + empID + " was updated successfully";
+}
         
         
         
-        return "Employee " + empID + " was updated successfully";}
 
 
         public String updateDirectorDept(String empID, String department) throws Exception {
