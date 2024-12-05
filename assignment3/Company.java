@@ -80,35 +80,43 @@ public class Company {
 
 
     public Map<String, Integer> mapEachDegree() {
-        if (dictEmployees.isEmpty()){
-            throw new IllegalArgumentException("No employees registered yet.");
-        }
-        String degree = null;
-        Map<String, Integer> degreeCounts = new HashMap<>();
-        for (int i = 0; i < dictEmployees.size(); i++) {
-            Employee employee = dictEmployees.get(i);
-            
-            if (employee instanceof Manager){
-                Manager manager = (Manager) employee;
-                degree = manager.getDegree();
-            } else if (employee instanceof Director){
-                Director director = ((Director) employee);
-                degree =  director.getDegree();
-            }
-
-            
-           
-            if (degree != null) {
-                if (degreeCounts.containsKey(degree)) {
-                    int currentCount = degreeCounts.get(degree);
-                    degreeCounts.put(degree, currentCount + 1);
-                } else {
-                    degreeCounts.put(degree, 1);
+        int bsc = 0;
+        int msc = 0;
+        int phd = 0;
+        Map<String, Integer> employeeDegreeDetails = new HashMap<>();
+    
+      
+        for (Employee employee : dictEmployees.values()) {
+            if (employee instanceof Manager manager) {
+                if (manager.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (manager.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                }
+            } else if (employee instanceof Director director) {
+                if (director.getDegree().equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("msc")) {
+                    msc += 1;
+                } else if (director.getDegree().equalsIgnoreCase("phd")) {
+                    phd += 1;
                 }
             }
         }
-        return degreeCounts; 
-     
+    
+       
+        if (bsc > 0) {
+            employeeDegreeDetails.put("BSc", bsc);
+        }
+        if (msc > 0) {
+            employeeDegreeDetails.put("MSc", msc);
+        }
+        if (phd > 0) {
+            employeeDegreeDetails.put("PhD", phd);
+        }
+    
+        return employeeDegreeDetails;
+        
 
     }
 
