@@ -165,7 +165,7 @@ public class Company {
 
     public  double getNetSalary(String empID){
         Employee emp = findEmployeeByID(empID);
-        return emp.getNetSalary();
+        return DoubleFormat.round(emp.getNetSalary());
 
     }
 
