@@ -109,7 +109,7 @@ public class Company {
 
 
     public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
+        StringBuilder allEmployees = new StringBuilder("All registered employees:");
         
         for (Employee employee : dictEmployees.values()) {
             allEmployees.append(" ").append(employee.getEmployeesInfo());
