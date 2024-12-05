@@ -18,7 +18,7 @@ public class Manager extends Employee {
         System.out.println(String.format("Manager %s was registered successfully", ID));
     }
 
-    public double calculateGrossSalary(double baseSalary) {
+    public double calculateGrossSalary(double baseSalary) throws Exception {
         return DoubleFormat.truncate(baseSalary * (1 + this.getBonus()));
     }
 

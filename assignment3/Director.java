@@ -17,7 +17,7 @@ public Director(String ID, String name, double grossSalary, String degree, Strin
     System.out.println(String.format("Director %s was registered successfully", ID));
 }
 
-public double calculateGrossSalaryWithDepartmentBonus(double baseSalary) {
+public double calculateGrossSalaryWithDepartmentBonus(double baseSalary) throws Exception {
     double departmentBonus = 5000.0;
     return baseSalary * (1 + this.getBonus()) + departmentBonus;
 }
@@ -62,7 +62,7 @@ public double getNetSalary() {
     return DoubleFormat.round(netSalary);
 }
 
-public void setDepartment(String department){
+public void setDepartment(String department) throws Exception{
     this.department = department;
     this.grossSalary = calculateGrossSalaryWithDepartmentBonus(this.originalGrossSalary); // Update salary after department change
 }
