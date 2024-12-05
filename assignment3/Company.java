@@ -114,7 +114,7 @@ public class Company {
         boolean first = true; // Flag to manage spacing between employees
         for (Employee employee : dictEmployees.values()) {
             if (!first) {
-                allEmployees.append(" "); 
+                allEmployees.append("\n"); 
             }
             allEmployees.append(employee.getEmployeesInfo()); 
             first = false;
