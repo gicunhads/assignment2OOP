@@ -174,14 +174,15 @@ public class Company {
     }
 
 
-    public void addEmployee(String employee) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void addEmployee(String employee) throws Exception {
+        throw new Exception("Invalid degree type");
     }
 
 
-    public  Employee findEmployeeByID(String id) {
+    public  Employee findEmployeeByID(String id) throws Exception {
         if (!dictEmployees.containsKey(id)) {
-            throw new IllegalArgumentException("Employee " + id + " was not registered yet.");
+            throw new Exception("Employee " + id + " was not registered yet.");
+            
         }
         return dictEmployees.get(id);
     }
@@ -197,13 +198,13 @@ public class Company {
         return sortedEmployees;
     }
 
-    public  double getNetSalary(String empID){
+    public  double getNetSalary(String empID) throws Exception{
         Employee emp = findEmployeeByID(empID);
         return DoubleFormat.round(emp.getNetSalary());
 
     }
 
-    public String promoteToDirector(String empID, String degree, String department){
+    public String promoteToDirector(String empID, String degree, String department) throws Exception{
         Employee emp = findEmployeeByID(empID);
     
     if (emp instanceof Manager) {
@@ -218,7 +219,7 @@ public class Company {
     }
 
     }
-    public String promoteToManager(String empID, String degree){
+    public String promoteToManager(String empID, String degree) throws Exception{
 
         Employee emp = findEmployeeByID(empID);
     
@@ -238,7 +239,7 @@ public class Company {
     }
 
 
-    public String promoteToIntern(String empID, int GPA){
+    public String promoteToIntern(String empID, int GPA) throws Exception{
         Employee emp = findEmployeeByID(empID);
     
     if (emp instanceof Employee) {
@@ -258,7 +259,7 @@ public class Company {
 
 
 
-    public String updateInternGPA(String empID, int GPA){
+    public String updateInternGPA(String empID, int GPA) throws Exception{
         Employee emp = findEmployeeByID(empID);
         if (emp instanceof Intern) {
             Intern intern = (Intern) emp;
@@ -284,7 +285,7 @@ public class Company {
 
 
 
-    public String updateManagerDegree(String empID, String degree){
+    public String updateManagerDegree(String empID, String degree) throws Exception{
         Employee emp = findEmployeeByID(empID);
     
         if (emp instanceof Manager) {
@@ -316,7 +317,7 @@ public class Company {
         return "Employee " + empID + " was updated successfully";}
 
 
-    public String updateDirectorDept(String empID, String department){
+    public String updateDirectorDept(String empID, String department) throws Exception{
         Employee emp = findEmployeeByID(empID);
     
         
