@@ -121,7 +121,7 @@ public class Company {
         }
     
         
-        return allEmployees.toString();
+        return allEmployees.toString() + " ";
     }
 
 
