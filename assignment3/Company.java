@@ -71,7 +71,7 @@ public class Company {
     public double getTotalNetSalary() {
         double totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
-            
+
             totalNetSalary += DoubleFormat.round(employee.getNetSalary());
         }
         return DoubleFormat.round(totalNetSalary);
@@ -80,66 +80,66 @@ public class Company {
 
 
     public Map<String, Integer> mapEachDegree() {
-        
+
         int bsc = 0;
         int msc = 0;
         int phd = 0;
-       
+
         Map<String, Integer> employeeDegreeDetails = new HashMap<>();
-        
-        
+
+
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
                 String degree = manager.getDegree();
                 if (degree.equalsIgnoreCase("bsc")) {
-                    
+
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
-                    
+
                     msc += 1;
                 }
             } else if (employee instanceof Director director) {
                 String degree = director.getDegree();
                 if (degree.equalsIgnoreCase("bsc")) {
-                    
+
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
-                    
+
                     msc += 1;
                 } else if (degree.equalsIgnoreCase("phd")) {
-                    
+
                     phd += 1;
 
-                } 
+                }
             }
         }
-        
-        
+
+
         if (bsc > 0) {
             employeeDegreeDetails.put("BSc", bsc);
         } else {
-            
-            employeeDegreeDetails.put("BSc", null);  
+
+            employeeDegreeDetails.put("BSc", null);
         }
-    
+
         if (msc > 0) {
             employeeDegreeDetails.put("MSc", msc);
         } else {
-            
-            employeeDegreeDetails.put("MSc", null);  
+
+            employeeDegreeDetails.put("MSc", null);
         }
-    
+
         if (phd > 0) {
             employeeDegreeDetails.put("PhD", phd);
         } else {
-            
-            employeeDegreeDetails.put("PhD", null);  
+
+            employeeDegreeDetails.put("PhD", null);
         }
-    
-       
+
+
         return employeeDegreeDetails;
     }
-    
+
 
 
     public String printAllEmployees() {
@@ -148,13 +148,13 @@ public class Company {
         boolean first = true; // Flag to manage spacing between employees
         for (Employee employee : dictEmployees.values()) {
             if (!first) {
-                allEmployees.append("\n"); 
+                allEmployees.append("\n");
             }
-            allEmployees.append(employee.getEmployeesInfo()); 
+            allEmployees.append(employee.getEmployeesInfo());
             first = false;
         }
-    
-        
+
+
         return allEmployees.toString() + "\n";
     }
 
@@ -174,13 +174,13 @@ public class Company {
     }
 
 
-   
+
 
 
     public  Employee findEmployeeByID(String id) throws Exception {
         if (!dictEmployees.containsKey(id)) {
             throw new Exception("Employee " + id + " was not registered yet.");
-            
+
         }
         return dictEmployees.get(id);
     }
@@ -202,74 +202,54 @@ public class Company {
 
     }
 
-    public String promoteToDirector(String empID, String degree, String department) throws Exception {
+    public String promoteToDirector(String empID, String degree, String department) throws Exception{
         Employee emp = findEmployeeByID(empID);
 
-    if (emp instanceof Manager) {
-        // Validate degree type
-        if (!List.of("BSc", "MSc", "PhD").contains(degree)) {
-            throw new Exception("Invalid degree type");
+        if (emp instanceof Manager) {
+
+            Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);
+
+            dictEmployees.put(empID, director);
+
+            return "Employee " + empID + " was updated successfully";
+        } else {
+            return "Employee " + empID + " is not eligible for promotion to Director";
         }
 
-    
-        double initialSalary = emp.getGrossSalary();
-        double multiplier = switch (degree.toLowerCase()) {
-            case "bsc" -> 1.10;
-            case "msc" -> 1.20;
-            case "phd" -> 1.35;
-            default -> throw new Exception("Invalid degree type");
-        };
-        double adjustedSalary = initialSalary * multiplier;
-
-      
-        double departmentBonus = 5000.00;
-        double grossSalaryWithBonus = adjustedSalary + departmentBonus;
-
-       
-        Director director = new Director(empID, emp.getName(), grossSalaryWithBonus, degree, department);
-        dictEmployees.put(empID, director);
-
-        return "Employee " + empID + " was updated successfully";
-    } else {
-        return "Employee " + empID + " is not eligible for promotion to Director";
     }
-}
-    
-
-    
     public String promoteToManager(String empID, String degree) throws Exception{
 
         Employee emp = findEmployeeByID(empID);
-    
+
         if (emp instanceof Employee) {
 
             if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
                 throw new Exception("Invalid degree type");
             }
-            
-       
-        Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);  
-        dictEmployees.put(empID, manager);
 
-        return ("Employee " + empID + " was updated successfully");
-    }    
+
+            Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);
+            dictEmployees.put(empID, manager);
+
+            return ("Employee " + empID + " was updated successfully");
+        }
         return "Employee " + empID + " is not eligible for promotion to Manager";
     }
 
 
     public String promoteToIntern(String empID, int GPA) throws Exception{
         Employee emp = findEmployeeByID(empID);
-    
-    if (emp instanceof Employee) {
-       
-        Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);  
-        
-        
-        dictEmployees.put(empID, intern);  
-        
-        return ("Employee " + empID + " was updated successfully");
-    } else 
-        return  ("Employee " + empID + " is not eligible for promotion to Intern");
+
+        if (emp instanceof Employee) {
+
+            Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);
+
+
+            dictEmployees.put(empID, intern);
+
+            return ("Employee " + empID + " was updated successfully");
+        } else
+            return  ("Employee " + empID + " is not eligible for promotion to Intern");
 
     }
 
@@ -282,20 +262,20 @@ public class Company {
         if (emp instanceof Intern) {
             Intern intern = (Intern) emp;
             intern.updateGPA(GPA);
-           
+
             intern.OriginalSalary = emp.getGrossSalary();
-            
+
 
             if (0 <= GPA && GPA <= 5) {
                 emp.updateSalary(0);  // No salary for GPA < 5
             } else if (5 < GPA && GPA <= 8) {
-                 emp.updateSalary(intern.OriginalSalary );
+                emp.updateSalary(intern.OriginalSalary );
             } else if (8 < GPA && GPA <= 10) {
                 emp.updateSalary(intern.OriginalSalary  + 1000); // Bonus for high GPA case
             } else {
-                throw new Exception("Invalid GPA value. Please enter a value between 0 and 10");
+                System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
             }
-  
+
         }
         return ("Employee " + empID + " was updated successfully");
     }
@@ -317,11 +297,13 @@ public class Company {
             }
             manager.setDegree(normalizedDegree);
 
+            if (!(emp instanceof Director)) {
 
-            switch (normalizedDegree) {
-                case "bsc" -> manager.updateSalary(initialSalary * 1.10);
-                case "msc" -> manager.updateSalary(initialSalary * 1.20);
-                case "phd" -> manager.updateSalary(initialSalary * 1.35);
+                switch (normalizedDegree) {
+                    case "bsc" -> manager.updateSalary(initialSalary * 1.10);
+                    case "msc" -> manager.updateSalary(initialSalary * 1.20);
+                    case "phd" -> manager.updateSalary(initialSalary * 1.35);
+                }
             }
         }
         if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
@@ -330,9 +312,7 @@ public class Company {
 
 
 
-        return "Employee " + empID + " was updated successfully";} 
-        
-        
+        return "Employee " + empID + " was updated successfully";}
 
 
     public String updateDirectorDept(String empID, String department) throws Exception{
@@ -342,13 +322,17 @@ public class Company {
         if (emp instanceof Director) {
             Director director = (Director) emp;
 
+
             director.setDepartment(department);
 
+
             double totalSalary = emp.getGrossSalary();
-            
+
             director.updateSalary(totalSalary + 5000);
         }
 
         return "Employee " + empID + " was updated successfully";}
+
+
+
 }
-        
