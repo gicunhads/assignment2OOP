@@ -202,21 +202,32 @@ public class Company {
 
     }
 
-    public String promoteToDirector(String empID, String degree, String department) throws Exception{
+    public String promoteToDirector(String empID, String degree, String department) throws Exception {
         Employee emp = findEmployeeByID(empID);
     
-    if (emp instanceof Manager) {
-        
-        Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);  
-        
-        dictEmployees.put(empID, director);  
-        
-        return "Employee " + empID + " was updated successfully";
-    } else {
-        return "Employee " + empID + " is not eligible for promotion to Director";
+        if (emp instanceof Manager) {
+            // Validate degree type
+            if (!List.of("BSc", "MSc", "PhD").contains(degree)) {
+                throw new Exception("Invalid degree type");
+            }
+    
+         
+            Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);
+    
+          
+            double newSalary = director.getGrossSalary() + 5000; 
+            director.updateSalary(newSalary);
+    
+            dictEmployees.put(empID, director);
+    
+            return "Employee " + empID + " was updated successfully";
+        } else {
+            return "Employee " + empID + " is not eligible for promotion to Director";
+        }
     }
+    
 
-    }
+    
     public String promoteToManager(String empID, String degree) throws Exception{
 
         Employee emp = findEmployeeByID(empID);
