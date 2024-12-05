@@ -237,15 +237,16 @@ public class Company {
         if (emp instanceof Intern) {
             Intern intern = (Intern) emp;
             intern.updateGPA(GPA);
-            Double initialSalary = emp.getGrossSalary();
-            double salery = intern.OriginalSalary;
+           
+            intern.OriginalSalary = emp.getGrossSalary();
+            
 
             if (0 <= GPA && GPA <= 5) {
                 emp.updateSalary(0);  // No salary for GPA < 5
             } else if (5 < GPA && GPA <= 8) {
-                 emp.updateSalary(salery);
+                 emp.updateSalary(intern.OriginalSalary );
             } else if (8 < GPA && GPA <= 10) {
-                emp.updateSalary(salery + 1000); // Bonus for high GPA case
+                emp.updateSalary(intern.OriginalSalary  + 1000); // Bonus for high GPA case
             } else {
                 System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
             }
