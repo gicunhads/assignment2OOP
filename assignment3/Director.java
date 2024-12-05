@@ -59,7 +59,7 @@ public double getNetSalary() {
     }
 
     netSalary = this.grossSalary - totalTax;
-    return netSalary;
+    return DoubleFormat.doubleFormater(netSalary);
 }
 
 public void setDepartment(String department){
