@@ -98,6 +98,8 @@ public class Company {
             }
         }
         
+        employeeDegreeDetails.entrySet().removeIf(entry -> entry.getValue() <= 0);
+        
         return employeeDegreeDetails;
        
 
