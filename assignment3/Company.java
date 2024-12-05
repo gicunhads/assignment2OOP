@@ -204,27 +204,36 @@ public class Company {
 
     public String promoteToDirector(String empID, String degree, String department) throws Exception {
         Employee emp = findEmployeeByID(empID);
-    
-        if (emp instanceof Manager) {
-            // Validate degree type
-            if (!List.of("BSc", "MSc", "PhD").contains(degree)) {
-                throw new Exception("Invalid degree type");
-            }
-    
-         
-            Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);
-    
-          
-            double newSalary = director.getGrossSalary() + 5000; 
-            director.updateSalary(newSalary);
-    
-            dictEmployees.put(empID, director);
-    
-            return "Employee " + empID + " was updated successfully";
-        } else {
-            return "Employee " + empID + " is not eligible for promotion to Director";
+
+    if (emp instanceof Manager) {
+        // Validate degree type
+        if (!List.of("BSc", "MSc", "PhD").contains(degree)) {
+            throw new Exception("Invalid degree type");
         }
+
+    
+        double initialSalary = emp.getGrossSalary();
+        double multiplier = switch (degree.toLowerCase()) {
+            case "bsc" -> 1.10;
+            case "msc" -> 1.20;
+            case "phd" -> 1.35;
+            default -> throw new Exception("Invalid degree type");
+        };
+        double adjustedSalary = initialSalary * multiplier;
+
+      
+        double departmentBonus = 5000.00;
+        double grossSalaryWithBonus = adjustedSalary + departmentBonus;
+
+       
+        Director director = new Director(empID, emp.getName(), grossSalaryWithBonus, degree, department);
+        dictEmployees.put(empID, director);
+
+        return "Employee " + empID + " was updated successfully";
+    } else {
+        return "Employee " + empID + " is not eligible for promotion to Director";
     }
+}
     
 
     
@@ -328,17 +337,31 @@ public class Company {
 
         public String updateDirectorDept(String empID, String department) throws Exception {
             Employee emp = findEmployeeByID(empID);
-        
+
             if (emp instanceof Director) {
                 Director director = (Director) emp;
         
-                // Update department
+               
                 director.setDepartment(department);
         
-                // Apply department bonus
-                double departmentBonus = 5000.00;
+           
                 double initialSalary = director.getGrossSalary();
-                director.updateSalary(initialSalary + departmentBonus);
+                double departmentBonus = 5000.00;
+                double grossSalaryWithBonus = initialSalary + departmentBonus;
+        
+                
+                double tax = 0.0;
+                if (grossSalaryWithBonus < 30000) {
+                    tax = grossSalaryWithBonus * 0.10;
+                } else if (grossSalaryWithBonus <= 50000) {
+                    tax = grossSalaryWithBonus * 0.20;
+                } else {
+                    tax = (30000 * 0.20) + ((grossSalaryWithBonus - 30000) * 0.40);
+                }
+        
+               
+                double netSalary = grossSalaryWithBonus - tax;
+                director.updateSalary(netSalary);
         
                 return "Employee " + empID + " was updated successfully";
             }
