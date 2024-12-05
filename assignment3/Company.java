@@ -80,42 +80,27 @@ public class Company {
 
 
     public Map<String, Integer> mapEachDegree() {
-        int bsc = 0;
-        int msc = 0;
-        int phd = 0;
         Map<String, Integer> employeeDegreeDetails = new HashMap<>();
     
       
         for (Employee employee : dictEmployees.values()) {
+            String degree = null;
+    
             if (employee instanceof Manager manager) {
-                if (manager.getDegree().equalsIgnoreCase("bsc")) {
-                    bsc += 1;
-                } else if (manager.getDegree().equalsIgnoreCase("msc")) {
-                    msc += 1;
-                }
+                degree = manager.getDegree();
             } else if (employee instanceof Director director) {
-                if (director.getDegree().equalsIgnoreCase("bsc")) {
-                    bsc += 1;
-                } else if (director.getDegree().equalsIgnoreCase("msc")) {
-                    msc += 1;
-                } else if (director.getDegree().equalsIgnoreCase("phd")) {
-                    phd += 1;
-                }
+                degree = director.getDegree();
+            }
+    
+            if (degree != null && !degree.isBlank()) {
+                degree = degree.trim().toUpperCase();
+                employeeDegreeDetails.put(degree, employeeDegreeDetails.getOrDefault(degree, 0) + 1);
             }
         }
-    
-       
-        if (bsc > 0) {
-            employeeDegreeDetails.put("BSc", bsc);
-        }
-        if (msc > 0) {
-            employeeDegreeDetails.put("MSc", msc);
-        }
-        if (phd > 0) {
-            employeeDegreeDetails.put("PhD", phd);
-        }
-    
+        
         return employeeDegreeDetails;
+       
+
         
 
     }
