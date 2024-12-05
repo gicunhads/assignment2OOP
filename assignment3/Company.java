@@ -299,11 +299,11 @@ public class Company {
         manager.setDegree(degree);
     
             
-            if (degree.equals("BSc")) {
+            if (degree.equals("bsc")) {
                 manager.updateSalary(initialSalary * 1.10);  
-            } else if (degree.equals("MSc")) {
+            } else if (degree.equals("msc")) {
                 manager.updateSalary(initialSalary * 1.20);  
-            } else if (degree.equals("PhD")) {
+            } else if (degree.equals("phd")) {
                 manager.updateSalary(initialSalary * 1.35);  
             }
         }
