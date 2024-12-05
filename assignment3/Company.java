@@ -109,7 +109,7 @@ public class Company {
 
 
     public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder("All registered employees:");
+        StringBuilder allEmployees = new StringBuilder("All registered employees: ");
 
       
         boolean first = true;
