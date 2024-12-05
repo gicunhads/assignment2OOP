@@ -65,4 +65,4 @@ public double getNetSalary() {
 public void setDepartment(String department) throws Exception{
     this.department = department;
   
-}
+}}
