@@ -114,8 +114,10 @@ public class Company {
         if (phd > 0) {
             employeeDegreeDetails.put("PhD", phd);
         }
-    
+
+        employeeDegreeDetails.entrySet().removeIf(entry -> entry.getValue() == 0);
         return employeeDegreeDetails;
+    
         
 
     }
