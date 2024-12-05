@@ -35,7 +35,7 @@ public class Employee {
     }
 
     public double getNetSalary(){
-        double taxableAmount = DoubleFormat.doubleFormater(this.grossSalary * this.getTax());
+        double taxableAmount = (this.grossSalary * this.getTax());
         double netSalary = this.grossSalary - taxableAmount;
         return DoubleFormat.doubleFormater(netSalary);
     }
