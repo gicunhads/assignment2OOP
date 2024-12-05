@@ -71,7 +71,7 @@ public class Company {
     public double getTotalNetSalary() {
         double totalNetSalary = 0;
         for (Employee employee : dictEmployees.values()){
-            totalNetSalary += employee.getNetSalary();
+            totalNetSalary += DoubleFormat.round(employee.getNetSalary());
         }
         return DoubleFormat.round(totalNetSalary);
 
