@@ -11,7 +11,7 @@ public class Company {
     }
 
 
-
+    // creation of employees with overloading: 
     public  String createEmployee(String id, String name, double grossSalary, String degree) throws Exception{
         if (dictEmployees.containsKey(id)) {
             String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
@@ -81,13 +81,13 @@ public class Company {
             String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
             throw new Exception(errorMessage);
         } else if (id.isBlank()) {
-            String errorMessage = String.format("ID cannot be blank.");
+            String errorMessage = "ID cannot be blank.";
             throw new Exception(errorMessage);
         } else if (name.isBlank()) {
-            String errorMessage = String.format("Name cannot be blank.");
+            String errorMessage = "Name cannot be blank.";
             throw new Exception(errorMessage);
         } else if (grossSalary <= 0) {
-            String errorMessage = String.format("Salary must be greater than zero.");
+            String errorMessage = "Salary must be greater than zero.";
             throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary);
@@ -96,6 +96,7 @@ public class Company {
         }
     }
 
+    
 
 
     public String removeEmployee(String id) throws Exception {
@@ -107,7 +108,15 @@ public class Company {
         }
     }
 
+    public  Employee findEmployeeByID(String id) throws Exception {
+        if (!dictEmployees.containsKey(id)) {
+            throw new Exception("Employee " + id + " was not registered yet.");
 
+        }
+        return dictEmployees.get(id);
+    }
+    
+    
     public String printEmployee(String id) throws Exception {
         if (dictEmployees.containsKey(id)) {
             Employee emp = dictEmployees.get(id);
@@ -116,11 +125,64 @@ public class Company {
             throw new Exception("Employee " + id + " was not registered yet.");
         }
     }
+    
 
+    public String printAllEmployees() throws Exception {
+
+
+        if (dictEmployees.isEmpty()){
+            String errorMessage = String.format("No employees registered yet.");
+            throw new Exception(errorMessage);
+        } else
+
+
+        {
+            StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
+
+            boolean first = true; // Flag to manage spacing between employees, matching printing in codegrade
+            for (Employee employee : dictEmployees.values()) {
+                if (!first) {
+                    allEmployees.append("\n");
+                }
+                allEmployees.append(employee.getEmployeesInfo());
+                first = false;
+            }
+            return allEmployees.toString() + "\n";
+        }
+    }
+
+    public String printSortedEmployees() throws Exception {
+
+
+        if (dictEmployees.isEmpty()){
+            String errorMessage = "No employees registered yet.";
+            throw new Exception(errorMessage);
+        } else
+
+
+        {
+            String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+            List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+            sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary)); // comparing gross Salaries of employees
+
+            for (Employee employee : sortedEmployeesList) {
+                sortedEmployees += employee.getEmployeesInfo() + "\n";
+            }
+            return sortedEmployees;
+        }
+    }
+
+
+    // salaries
+    public  double getNetSalary(String empID) throws Exception{
+        Employee emp = findEmployeeByID(empID);
+        return DoubleFormat.round(emp.getNetSalary());
+
+    }
 
     public double getTotalNetSalary() throws Exception {
         if (dictEmployees.isEmpty()){
-            String errorMessage = String.format("No employees registered yet.");
+            String errorMessage = "No employees registered yet.";
             throw new Exception(errorMessage);
         } else {
             double totalNetSalary = 0;
@@ -133,67 +195,8 @@ public class Company {
     }
 
 
-    public Map<String, Integer> mapEachDegree() throws Exception {
-        if (dictEmployees.isEmpty()) {
-            throw new Exception("No employees registered yet.");
-        }
 
-        int bsc = 0;
-        int msc = 0;
-        int phd = 0;
-
-        Map<String, Integer> employeeDegreeDetails = new HashMap<>();
-
-        // Count degrees
-        for (Employee employee : dictEmployees.values()) {
-            if (employee instanceof Manager manager) {
-                String degree = manager.getDegree();
-                if (degree.equalsIgnoreCase("bsc")) {
-                    bsc += 1;
-                } else if (degree.equalsIgnoreCase("msc")) {
-                    msc += 1;
-                } else if (degree.equalsIgnoreCase("phd")) {
-                    phd += 1;
-                }
-            }
-        }
-
-        // Add keys for degrees only if their count is > 0
-        if (bsc > 0) {
-            employeeDegreeDetails.put("BSc", bsc);
-        }
-        if (msc > 0) {
-            employeeDegreeDetails.put("MSc", msc);
-        }
-        if (phd > 0) {
-            employeeDegreeDetails.put("PhD", phd);
-        }
-
-        return employeeDegreeDetails;
-    }
-
-
-
-    public String printAllEmployees() throws Exception {
-        if (dictEmployees.isEmpty()){
-            String errorMessage = "No employees registered yet.";
-            throw new Exception(errorMessage);
-        } else {
-            StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
-
-            boolean first = true; // Flag to manage spacing between employees
-            for (Employee employee : dictEmployees.values()) {
-                if (!first) {
-                    allEmployees.append("\n");
-                }
-                allEmployees.append(employee.getEmployeesInfo());
-                first = false;
-            }
-            return allEmployees.toString() + "\n";
-        }
-    }
-
-
+    // update methods
 
     public String updateGrossSalary(String id, double newSalary) throws Exception {
         if (newSalary <= 0) {
@@ -216,94 +219,6 @@ public class Company {
             return ("Employee " + id + " was updated successfully");
         }
     }
-
-
-
-
-
-    public  Employee findEmployeeByID(String id) throws Exception {
-        if (!dictEmployees.containsKey(id)) {
-            throw new Exception("Employee " + id + " was not registered yet.");
-
-        }
-        return dictEmployees.get(id);
-    }
-
-    public String printSortedEmployees() throws Exception {
-        if (dictEmployees.isEmpty()){
-            String errorMessage = "No employees registered yet.";
-            throw new Exception(errorMessage);
-        } else {
-            String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
-            List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
-            sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
-
-            for (Employee employee : sortedEmployeesList) {
-                sortedEmployees += employee.getEmployeesInfo() + "\n";
-            }
-            return sortedEmployees;
-        }
-    }
-
-    public  double getNetSalary(String empID) throws Exception{
-        Employee emp = findEmployeeByID(empID);
-        return DoubleFormat.round(emp.getNetSalary());
-
-    }
-
-    public String promoteToDirector(String empID, String degree, String department) throws Exception{
-        Employee emp = findEmployeeByID(empID);
-
-        if (emp instanceof Manager) {
-
-            Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);
-
-            dictEmployees.put(empID, director);
-
-            return "Employee " + empID + " was updated successfully";
-        } else {
-            return "Employee " + empID + " is not eligible for promotion to Director";
-        }
-
-    }
-    public String promoteToManager(String empID, String degree) throws Exception{
-
-        Employee emp = findEmployeeByID(empID);
-
-        if (emp != null) {
-
-            if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
-                throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
-            }
-
-
-            Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);
-            dictEmployees.put(empID, manager);
-
-            return ("Employee " + empID + " was updated successfully");
-        }
-        return "Employee " + empID + " is not eligible for promotion to Manager";
-    }
-
-
-    public String promoteToIntern(String empID, int GPA) throws Exception{
-        Employee emp = findEmployeeByID(empID);
-
-        if (emp != null) {
-
-            Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);
-
-
-            dictEmployees.put(empID, intern);
-
-            return ("Employee " + empID + " was updated successfully");
-        } else
-            return  ("Employee " + empID + " is not eligible for promotion to Intern");
-
-    }
-
-
-
 
 
     public String updateInternGPA(String empID, int GPA) throws Exception{
@@ -384,50 +299,99 @@ public class Company {
         return "Employee " + empID + " was updated successfully";}
 
 
+    // promote methods
 
+    public String promoteToDirector(String empID, String degree, String department) throws Exception{
+        Employee emp = findEmployeeByID(empID);
 
-    public static void main() throws Exception {
+        if (emp instanceof Manager) {
 
+            Director director = new Director(empID, emp.getName(), emp.getGrossSalary(), degree, department);
 
-        Locale.setDefault(Locale.US);
+            dictEmployees.put(empID, director);
 
-
-
-        Company facade = new Company();
-
-        try{
-            // 2 employees, 2 directors, 1 manager, 3 interns
-            // G: Gross salary; N: Net salary
-            facade.createEmployee("Emp1", "Elektra", 35000.50, "MSc", "Business");
-            facade.createEmployee("Emp2", "Blanca", 45000.00, "PhD", "Human Resources");
-            facade.createEmployee("Emp3", "Pray Tell", 25000.25, "BSc");
-            // G: 27500.27; N: 24750.24
-            facade.createEmployee("Emp4", "Lulu", 20000.00, 9);
-            // G: 21000.00; N: 21000.00
-            facade.createEmployee("Emp5", "Angel", 28500.10, 7);
-            // G: 28500.10; N: 28500.10
-            facade.createEmployee("Emp6", "Candy", 35000.50, 4);
-            // G: 0.00; N: 0.00
-            facade.createEmployee("Emp7", "Ricky", 23500.00);
-            // G: 23500.00; N: 21150.00
-            facade.createEmployee("Emp8", "Damon", 22100.00);
-            // G: 22100.00; N: 19890.00
-        }catch(Exception e){
+            return "Employee " + empID + " was updated successfully";
+        } else {
+            return "Employee " + empID + " is not eligible for promotion to Director";
         }
 
+    }
+    public String promoteToManager(String empID, String degree) throws Exception{
+
+        Employee emp = findEmployeeByID(empID);
+
+        if (emp != null) {
+
+            if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
+                throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
+            }
 
 
+            Manager manager = new Manager(empID, emp.getName(), emp.getGrossSalary(), degree);
+            dictEmployees.put(empID, manager);
 
-        Map<String, Integer> actualMap = facade.mapEachDegree();
-        facade.removeEmployee("Emp2"); // Remove Blanca with the PhD
-        //Adds temporary employees with more 3 MSc and 1 BSc
-        facade.createEmployee("Temp1", "John Doe", 25000.0, "MSc");
-        facade.createEmployee("Temp2", "Jane Doe", 25000.0, "MSc");
-        facade.createEmployee("Temp3", "Mary Doe", 25000.0, "MSc");
-        facade.createEmployee("Temp4", "Mark Doe", 25000.0, "BSc");
-        actualMap = facade.mapEachDegree();
-        System.out.println(actualMap);
+            return ("Employee " + empID + " was updated successfully");
+        }
+        return "Employee " + empID + " is not eligible for promotion to Manager";
+    }
 
+
+    public String promoteToIntern(String empID, int GPA) throws Exception{
+        Employee emp = findEmployeeByID(empID);
+
+        if (emp != null) {
+
+            Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);
+
+
+            dictEmployees.put(empID, intern);
+
+            return ("Employee " + empID + " was updated successfully");
+        } else
+            return  ("Employee " + empID + " is not eligible for promotion to Intern");
 
     }
+
+    public Map<String, Integer> mapEachDegree() throws Exception {
+        if (dictEmployees.isEmpty()) {
+            throw new Exception("No employees registered yet.");
+        }
+
+        int bsc = 0;
+        int msc = 0;
+        int phd = 0;
+
+        Map<String, Integer> employeeDegreeDetails = new HashMap<>();
+
+        // Count degrees
+        for (Employee employee : dictEmployees.values()) {
+            if (employee instanceof Manager manager) {
+                String degree = manager.getDegree();
+                if (degree.equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (degree.equalsIgnoreCase("msc")) {
+                    msc += 1;
+                } else if (degree.equalsIgnoreCase("phd")) {
+                    phd += 1;
+                }
+            }
+        }
+
+        // Add keys for degrees only if their count is > 0
+        if (bsc > 0) {
+            employeeDegreeDetails.put("BSc", bsc);
+        }
+        if (msc > 0) {
+            employeeDegreeDetails.put("MSc", msc);
+        }
+        if (phd > 0) {
+            employeeDegreeDetails.put("PhD", phd);
+        }
+
+        return employeeDegreeDetails;
+    }
+
+
+
+
 }
