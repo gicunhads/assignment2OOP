@@ -14,7 +14,7 @@ public class Director extends Manager {
             throw new Exception("Department must be one of the options: Business, Human Resources or Technical.");
         }
         this.grossSalary = calculateGrossSalaryWithDepartmentBonus(grossSalary);
-        System.out.println(String.format("Director %s was registered successfully", ID));
+        System.out.printf("Director %s was registered successfully%n", ID);
     }
 
     public double calculateGrossSalaryWithDepartmentBonus(double baseSalary) throws Exception {
@@ -61,7 +61,7 @@ public class Director extends Manager {
         netSalary = this.grossSalary - totalTax;
         return DoubleFormat.round(netSalary);
     }
-    
+
     public void setDepartment(String department) throws Exception{
         this.department = department;
     }
