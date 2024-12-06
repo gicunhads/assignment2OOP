@@ -154,14 +154,14 @@ public class Company {
         // Count degrees
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
-                String degree = manager.getDegree();
+                String degree = manager.getDegree(); // returns lower case degree
                 if (degree.equalsIgnoreCase("bsc")) {
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
                     msc += 1;
                 }
             } else if (employee instanceof Director director) {
-                String degree = director.getDegree();
+                String degree = director.getDegree(); // returns lower case degree
                 if (degree.equalsIgnoreCase("bsc")) {
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
@@ -400,6 +400,51 @@ public class Company {
 
         return "Employee " + empID + " was updated successfully";}
 
+    
 
+       
+            public static void main() throws Exception {
+                
+                 
+                Locale.setDefault(Locale.US);
+                
+             
+                
+                Company facade = new Company();
 
+                try{
+                    // 2 employees, 2 directors, 1 manager, 3 interns
+                    // G: Gross salary; N: Net salary
+                    facade.createEmployee("Emp1", "Elektra", 35000.50, "MSc", "Business");
+                    facade.createEmployee("Emp2", "Blanca", 45000.00, "PhD", "Human Resources");
+                    facade.createEmployee("Emp3", "Pray Tell", 25000.25, "BSc");
+                    // G: 27500.27; N: 24750.24
+                    facade.createEmployee("Emp4", "Lulu", 20000.00, 9);
+                    // G: 21000.00; N: 21000.00
+                    facade.createEmployee("Emp5", "Angel", 28500.10, 7);
+                    // G: 28500.10; N: 28500.10
+                    facade.createEmployee("Emp6", "Candy", 35000.50, 4);
+                    // G: 0.00; N: 0.00
+                    facade.createEmployee("Emp7", "Ricky", 23500.00);
+                    // G: 23500.00; N: 21150.00
+                    facade.createEmployee("Emp8", "Damon", 22100.00);
+                    // G: 22100.00; N: 19890.00
+                    }catch(Exception e){
+                    }
+                    
+        
+                    
+
+            Map<String, Integer> actualMap = facade.mapEachDegree();
+            facade.removeEmployee("Emp2"); // Remove Blanca with the PhD
+            //Adds temporary employees with more 3 MSc and 1 BSc
+            facade.createEmployee("Temp1", "John Doe", 25000.0, "MSc");
+            facade.createEmployee("Temp2", "Jane Doe", 25000.0, "MSc");
+            facade.createEmployee("Temp3", "Mary Doe", 25000.0, "MSc");
+            facade.createEmployee("Temp4", "Mark Doe", 25000.0, "BSc");
+            actualMap = facade.mapEachDegree();
+            System.out.println(actualMap);
+            
+            
+                }            
 }
