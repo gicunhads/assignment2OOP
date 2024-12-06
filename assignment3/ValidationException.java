@@ -22,6 +22,6 @@ class InvalidEmployeeDataException extends ValidationException {
 // Specific exception for invalid GPA (for Interns)
 class InvalidGpaException extends ValidationException {
     public InvalidGpaException(int gpa) {
-        super("Invalid GPA: " + gpa);
+        super(gpa + " outside range. Must be between 0-10.");
     }
 }

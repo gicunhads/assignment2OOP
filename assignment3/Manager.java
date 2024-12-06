@@ -9,7 +9,7 @@ public class Manager extends Employee {
         super(ID, name, grossSalary);
         this.degree = degree.trim().toLowerCase();
         if (!List.of("bsc", "msc", "phd").contains(this.degree)) {
-            throw new Exception("Invalid degree.");
+            throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
         }
         this.tax = 0.1;
 
@@ -31,7 +31,7 @@ public class Manager extends Employee {
             case "bsc" -> { return 0.10; }
             case "msc" -> { return 0.20; }
             case "phd" -> { return 0.35; }
-            default -> throw new Exception("Invalid degree type");
+            default -> throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
         }
     }
 

@@ -14,8 +14,17 @@ public class Company {
 
     public  String createEmployee(String id, String name, double grossSalary, String degree) throws Exception{
         if (dictEmployees.containsKey(id)) {
-            String message = String.format("Cannot register. ID %s is already registered.", id);
-            throw new Exception(message);
+            String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(errorMessage);
+        } else if (id.isBlank()) {
+            String errorMessage = String.format("ID cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (name.isBlank()) {
+            String errorMessage = String.format("Name cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (grossSalary <= 0) {
+            String errorMessage = String.format("Salary must be greater than zero.");
+            throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary, degree);
             dictEmployees.put(id, employee);
@@ -26,8 +35,17 @@ public class Company {
 
     public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws Exception {
         if (dictEmployees.containsKey(id)) {
-            String message = String.format("Cannot register. ID %s is already registered.", id);
-            throw new Exception(message);
+            String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(errorMessage);
+        } else if (id.isBlank()) {
+            String errorMessage = String.format("ID cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (name.isBlank()) {
+            String errorMessage = String.format("Name cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (grossSalary <= 0) {
+            String errorMessage = String.format("Salary must be greater than zero.");
+            throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary, degree, department);
             dictEmployees.put(id, employee);
@@ -37,8 +55,20 @@ public class Company {
 
     public  String createEmployee(String id, String name, double grossSalary, int gpa) throws Exception{
         if (dictEmployees.containsKey(id)) {
-            String message = String.format("Cannot register. ID %s is already registered.", id);
-            throw new Exception(message);
+            String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(errorMessage);
+        } else if (id.isBlank()) {
+            String errorMessage = String.format("ID cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (name.isBlank()) {
+            String errorMessage = String.format("Name cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (grossSalary <= 0) {
+            String errorMessage = String.format("Salary must be greater than zero.");
+            throw new Exception(errorMessage);
+        } else if (gpa < 0 && gpa > 10) {
+            String errorMessage = String.format("%d outside range. Must be between 0-10.", gpa);
+            throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary, gpa);
             dictEmployees.put(id, employee);
@@ -48,8 +78,17 @@ public class Company {
 
     public  String createEmployee(String id, String name, double grossSalary) throws Exception {
         if (dictEmployees.containsKey(id)) {
-            String message = String.format("Cannot register. ID %s is already registered.", id);
-            throw new Exception(message);
+            String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(errorMessage);
+        } else if (id.isBlank()) {
+            String errorMessage = String.format("ID cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (name.isBlank()) {
+            String errorMessage = String.format("Name cannot be blank.");
+            throw new Exception(errorMessage);
+        } else if (grossSalary <= 0) {
+            String errorMessage = String.format("Salary must be greater than zero.");
+            throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary);
             dictEmployees.put(id, employee);
@@ -60,9 +99,6 @@ public class Company {
 
 
     public void addEmployee(Employee employee) throws Exception{
-        if (dictEmployees.containsKey(employee.getID())) {
-            throw new Exception("Employee " + employee.getID() + " is already registered.");
-        }
         dictEmployees.put(employee.getID(), employee);
 
         System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
@@ -89,109 +125,127 @@ public class Company {
     }
 
 
-    public double getTotalNetSalary() {
-        double totalNetSalary = 0;
-        for (Employee employee : dictEmployees.values()){
+    public double getTotalNetSalary() throws Exception {
+        if (dictEmployees.isEmpty()){
+            String errorMessage = String.format("No employees registered yet.");
+            throw new Exception(errorMessage);
+        } else {
+            double totalNetSalary = 0;
+            for (Employee employee : dictEmployees.values()) {
 
-            totalNetSalary += DoubleFormat.round(employee.getNetSalary());
+                totalNetSalary += DoubleFormat.round(employee.getNetSalary());
+            }
+            return DoubleFormat.round(totalNetSalary);
         }
-        return DoubleFormat.round(totalNetSalary);
-
     }
 
 
-    public Map<String, Integer> mapEachDegree() {
+    public Map<String, Integer> mapEachDegree() throws Exception {
+        if (dictEmployees.isEmpty()){
+            String errorMessage = String.format("No employees registered yet.");
+            throw new Exception(errorMessage);
+        } else {
 
-        int bsc = 0;
-        int msc = 0;
-        int phd = 0;
+            int bsc = 0;
+            int msc = 0;
+            int phd = 0;
 
-        Map<String, Integer> employeeDegreeDetails = new HashMap<>();
+            Map<String, Integer> employeeDegreeDetails = new HashMap<>();
 
 
-        for (Employee employee : dictEmployees.values()) {
-            if (employee instanceof Manager manager) {
-                String degree = manager.getDegree();
-                if (degree.equalsIgnoreCase("bsc")) {
+            for (Employee employee : dictEmployees.values()) {
+                if (employee instanceof Manager manager) {
+                    String degree = manager.getDegree();
+                    if (degree.equalsIgnoreCase("bsc")) {
 
-                    bsc += 1;
-                } else if (degree.equalsIgnoreCase("msc")) {
+                        bsc += 1;
+                    } else if (degree.equalsIgnoreCase("msc")) {
 
-                    msc += 1;
-                }
-            } else if (employee instanceof Director director) {
-                String degree = director.getDegree();
-                if (degree.equalsIgnoreCase("bsc")) {
+                        msc += 1;
+                    }
+                } else if (employee instanceof Director director) {
+                    String degree = director.getDegree();
+                    if (degree.equalsIgnoreCase("bsc")) {
 
-                    bsc += 1;
-                } else if (degree.equalsIgnoreCase("msc")) {
+                        bsc += 1;
+                    } else if (degree.equalsIgnoreCase("msc")) {
 
-                    msc += 1;
-                } else if (degree.equalsIgnoreCase("phd")) {
+                        msc += 1;
+                    } else if (degree.equalsIgnoreCase("phd")) {
 
-                    phd += 1;
-
+                        phd += 1;
+                    }
                 }
             }
+            if (bsc > 0) {
+                employeeDegreeDetails.put("BSc", bsc);
+            } else {
+
+                employeeDegreeDetails.put("BSc", null);
+            }
+
+            if (msc > 0) {
+                employeeDegreeDetails.put("MSc", msc);
+            } else {
+
+                employeeDegreeDetails.put("MSc", null);
+            }
+
+            if (phd > 0) {
+                employeeDegreeDetails.put("PhD", phd);
+            } else {
+
+                employeeDegreeDetails.put("PhD", null);
+            }
+
+
+            return employeeDegreeDetails;
         }
-
-
-        if (bsc > 0) {
-            employeeDegreeDetails.put("BSc", bsc);
-        } else {
-
-            employeeDegreeDetails.put("BSc", null);
-        }
-
-        if (msc > 0) {
-            employeeDegreeDetails.put("MSc", msc);
-        } else {
-
-            employeeDegreeDetails.put("MSc", null);
-        }
-
-        if (phd > 0) {
-            employeeDegreeDetails.put("PhD", phd);
-        } else {
-
-            employeeDegreeDetails.put("PhD", null);
-        }
-
-
-        return employeeDegreeDetails;
     }
 
 
 
-    public String printAllEmployees() {
-        StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
+    public String printAllEmployees() throws Exception {
+        if (dictEmployees.isEmpty()){
+            String errorMessage = String.format("No employees registered yet.");
+            throw new Exception(errorMessage);
+        } else {
+            StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
 
-        boolean first = true; // Flag to manage spacing between employees
-        for (Employee employee : dictEmployees.values()) {
-            if (!first) {
-                allEmployees.append("\n");
+            boolean first = true; // Flag to manage spacing between employees
+            for (Employee employee : dictEmployees.values()) {
+                if (!first) {
+                    allEmployees.append("\n");
+                }
+                allEmployees.append(employee.getEmployeesInfo());
+                first = false;
             }
-            allEmployees.append(employee.getEmployeesInfo());
-            first = false;
+            return allEmployees.toString() + "\n";
         }
-
-
-        return allEmployees.toString() + "\n";
     }
 
 
 
     public String updateGrossSalary(String id, double newSalary) throws Exception {
-        Employee emp = findEmployeeByID(id);
-        emp.updateSalary(newSalary);
-        return ("Employee " + id + " was updated successfully");
+        if (newSalary <= 0) {
+            throw new Exception("Salary must be greater than zero.");
+        } else {
+            Employee emp = findEmployeeByID(id);
+            emp.updateSalary(newSalary);
+            return ("Employee " + id + " was updated successfully");
+        }
     }
 
 
     public String updateEmployeeName(String id, String newName) throws Exception {
-        Employee emp = findEmployeeByID(id);
-        emp.updateName(newName);
-        return ("Employee " + id + " was updated successfully");
+        if (newName.isBlank()) {
+            String errorMessage = String.format("Name cannot be blank.");
+            throw new Exception(errorMessage);
+        } else {
+            Employee emp = findEmployeeByID(id);
+            emp.updateName(newName);
+            return ("Employee " + id + " was updated successfully");
+        }
     }
 
 
@@ -206,15 +260,20 @@ public class Company {
         return dictEmployees.get(id);
     }
 
-    public String printSortedEmployees(){
-        String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
-        List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
-        sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
+    public String printSortedEmployees() throws Exception {
+        if (dictEmployees.isEmpty()){
+            String errorMessage = String.format("No employees registered yet.");
+            throw new Exception(errorMessage);
+        } else {
+            String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
+            List<Employee> sortedEmployeesList = new ArrayList<>(dictEmployees.values());
+            sortedEmployeesList.sort(Comparator.comparingDouble(Employee::getGrossSalary));
 
-        for (Employee employee : sortedEmployeesList) {
-            sortedEmployees += employee.getEmployeesInfo() + "\n";
+            for (Employee employee : sortedEmployeesList) {
+                sortedEmployees += employee.getEmployeesInfo() + "\n";
+            }
+            return sortedEmployees;
         }
-        return sortedEmployees;
     }
 
     public  double getNetSalary(String empID) throws Exception{
@@ -245,7 +304,7 @@ public class Company {
         if (emp instanceof Employee) {
 
             if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
-                throw new Exception("Invalid degree type");
+                throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
             }
 
 
@@ -294,7 +353,8 @@ public class Company {
             } else if (8 < GPA && GPA <= 10) {
                 emp.updateSalary(salery  + 1000); // Bonus for high GPA case
             } else {
-                System.out.println("Invalid GPA value. Please enter a value between 0 and 10");
+                String errorMessage = String.format("%d outside range. Must be between 0-10.", GPA);
+                throw new Exception(errorMessage);
             }
 
         }
@@ -313,7 +373,7 @@ public class Company {
 
             String normalizedDegree = degree.trim().toLowerCase();
             if (!List.of("bsc", "msc", "phd").contains(normalizedDegree)) {
-                throw new Exception("Invalid degree type");
+                throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
             }
             manager.setDegree(normalizedDegree);
 
@@ -327,7 +387,7 @@ public class Company {
             }
         }
         if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
-            throw new Exception("Invalid degree type");
+            throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
         }
 
 
