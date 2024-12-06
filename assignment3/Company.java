@@ -13,27 +13,48 @@ public class Company {
 
 
     public  String createEmployee(String id, String name, double grossSalary, String degree) throws Exception{
-        Employee employee = factory.createEmployee(id, name, grossSalary, degree);
-        dictEmployees.put(id, employee);
-        return String.format("Employee %s was registered successfully.", id);
+        if (dictEmployees.containsKey(id)) {
+            String message = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(message);
+        } else {
+            Employee employee = factory.createEmployee(id, name, grossSalary, degree);
+            dictEmployees.put(id, employee);
+            return String.format("Employee %s was registered successfully.", id);
+        }
     }
+
 
     public  String createEmployee(String id, String name, double grossSalary, String degree, String department) throws Exception {
-        Employee employee = factory.createEmployee(id, name, grossSalary, degree, department);
-        dictEmployees.put(id, employee);
-        return String.format("Employee %s was registered successfully.", id);
+        if (dictEmployees.containsKey(id)) {
+            String message = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(message);
+        } else {
+            Employee employee = factory.createEmployee(id, name, grossSalary, degree, department);
+            dictEmployees.put(id, employee);
+            return String.format("Employee %s was registered successfully.", id);
+        }
     }
 
-    public  String createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
-        Employee employee = factory.createEmployee(id, name, grossSalary, gpa);
-        dictEmployees.put(id, employee);
-        return String.format("Employee %s was registered successfully.", id);
+    public  String createEmployee(String id, String name, double grossSalary, int gpa) throws Exception{
+        if (dictEmployees.containsKey(id)) {
+            String message = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(message);
+        } else {
+            Employee employee = factory.createEmployee(id, name, grossSalary, gpa);
+            dictEmployees.put(id, employee);
+            return String.format("Employee %s was registered successfully.", id);
+        }
     }
 
-    public  String createEmployee(String id, String name, double grossSalary) throws ValidationException {
-        Employee employee = factory.createEmployee(id, name,  grossSalary);
-        dictEmployees.put(id, employee);
-        return String.format("Employee %s was registered successfully.", id);
+    public  String createEmployee(String id, String name, double grossSalary) throws Exception {
+        if (dictEmployees.containsKey(id)) {
+            String message = String.format("Cannot register. ID %s is already registered.", id);
+            throw new Exception(message);
+        } else {
+            Employee employee = factory.createEmployee(id, name, grossSalary);
+            dictEmployees.put(id, employee);
+            return String.format("Employee %s was registered successfully.", id);
+        }
     }
 
 
