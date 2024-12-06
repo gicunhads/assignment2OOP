@@ -15,7 +15,7 @@ public class Manager extends Employee {
 
         this.grossSalary = calculateGrossSalary(grossSalary);
         this.originalGrossSalary = grossSalary;
-        System.out.println(String.format("Manager %s was registered successfully", ID));
+        System.out.printf("Manager %s was registered successfully%n", ID);
     }
 
     public double calculateGrossSalary(double baseSalary) throws Exception {
