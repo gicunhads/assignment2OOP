@@ -17,13 +17,13 @@ public class Company {
             String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
             throw new Exception(errorMessage);
         } else if (id.isBlank()) {
-            String errorMessage = String.format("ID cannot be blank.");
+            String errorMessage = "ID cannot be blank.";
             throw new Exception(errorMessage);
         } else if (name.isBlank()) {
-            String errorMessage = String.format("Name cannot be blank.");
+            String errorMessage = "Name cannot be blank.";
             throw new Exception(errorMessage);
         } else if (grossSalary <= 0) {
-            String errorMessage = String.format("Salary must be greater than zero.");
+            String errorMessage = "Salary must be greater than zero.";
             throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary, degree);
@@ -38,13 +38,13 @@ public class Company {
             String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
             throw new Exception(errorMessage);
         } else if (id.isBlank()) {
-            String errorMessage = String.format("ID cannot be blank.");
+            String errorMessage = "ID cannot be blank.";
             throw new Exception(errorMessage);
         } else if (name.isBlank()) {
-            String errorMessage = String.format("Name cannot be blank.");
+            String errorMessage = "Name cannot be blank.";
             throw new Exception(errorMessage);
         } else if (grossSalary <= 0) {
-            String errorMessage = String.format("Salary must be greater than zero.");
+            String errorMessage = "Salary must be greater than zero.";
             throw new Exception(errorMessage);
         } else {
             Employee employee = factory.createEmployee(id, name, grossSalary, degree, department);
@@ -58,13 +58,13 @@ public class Company {
             String errorMessage = String.format("Cannot register. ID %s is already registered.", id);
             throw new Exception(errorMessage);
         } else if (id.isBlank()) {
-            String errorMessage = String.format("ID cannot be blank.");
+            String errorMessage = "ID cannot be blank.";
             throw new Exception(errorMessage);
         } else if (name.isBlank()) {
-            String errorMessage = String.format("Name cannot be blank.");
+            String errorMessage = "Name cannot be blank.";
             throw new Exception(errorMessage);
         } else if (grossSalary <= 0) {
-            String errorMessage = String.format("Salary must be greater than zero.");
+            String errorMessage = "Salary must be greater than zero.";
             throw new Exception(errorMessage);
         } else if (gpa < 0 && gpa > 10) {
             String errorMessage = String.format("%d outside range. Must be between 0-10.", gpa);
@@ -96,13 +96,6 @@ public class Company {
         }
     }
 
-
-
-    public void addEmployee(Employee employee) throws Exception{
-        dictEmployees.put(employee.getID(), employee);
-
-        System.out.println(String.format("Employee %s was registered successfully.", employee.getID()));
-    }
 
 
     public String removeEmployee(String id) throws Exception {
@@ -154,14 +147,7 @@ public class Company {
         // Count degrees
         for (Employee employee : dictEmployees.values()) {
             if (employee instanceof Manager manager) {
-                String degree = manager.getDegree(); // returns lower case degree
-                if (degree.equalsIgnoreCase("bsc")) {
-                    bsc += 1;
-                } else if (degree.equalsIgnoreCase("msc")) {
-                    msc += 1;
-                }
-            } else if (employee instanceof Director director) {
-                String degree = director.getDegree(); // returns lower case degree
+                String degree = manager.getDegree();
                 if (degree.equalsIgnoreCase("bsc")) {
                     bsc += 1;
                 } else if (degree.equalsIgnoreCase("msc")) {
@@ -190,7 +176,7 @@ public class Company {
 
     public String printAllEmployees() throws Exception {
         if (dictEmployees.isEmpty()){
-            String errorMessage = String.format("No employees registered yet.");
+            String errorMessage = "No employees registered yet.";
             throw new Exception(errorMessage);
         } else {
             StringBuilder allEmployees = new StringBuilder("All registered employees:\n");
@@ -222,7 +208,7 @@ public class Company {
 
     public String updateEmployeeName(String id, String newName) throws Exception {
         if (newName.isBlank()) {
-            String errorMessage = String.format("Name cannot be blank.");
+            String errorMessage = "Name cannot be blank.";
             throw new Exception(errorMessage);
         } else {
             Employee emp = findEmployeeByID(id);
@@ -245,7 +231,7 @@ public class Company {
 
     public String printSortedEmployees() throws Exception {
         if (dictEmployees.isEmpty()){
-            String errorMessage = String.format("No employees registered yet.");
+            String errorMessage = "No employees registered yet.";
             throw new Exception(errorMessage);
         } else {
             String sortedEmployees = "Employees sorted by gross salary (ascending order):\n";
@@ -284,7 +270,7 @@ public class Company {
 
         Employee emp = findEmployeeByID(empID);
 
-        if (emp instanceof Employee) {
+        if (emp != null) {
 
             if (!degree.equalsIgnoreCase("PhD") && !degree.equalsIgnoreCase("MSc") && !degree.equalsIgnoreCase("BSc")) {
                 throw new Exception("Degree must be one of the options: BSc, MSc or PhD.");
@@ -303,7 +289,7 @@ public class Company {
     public String promoteToIntern(String empID, int GPA) throws Exception{
         Employee emp = findEmployeeByID(empID);
 
-        if (emp instanceof Employee) {
+        if (emp != null) {
 
             Intern intern = new Intern(empID, emp.getName(), emp.getGrossSalary(), GPA);
 
@@ -320,21 +306,20 @@ public class Company {
 
 
 
-       public String updateInternGPA(String empID, int GPA) throws Exception{
+    public String updateInternGPA(String empID, int GPA) throws Exception{
         Employee emp = findEmployeeByID(empID);
-        if (emp instanceof Intern) {
-            Intern intern = (Intern) emp;
+        if (emp instanceof Intern intern) {
             intern.updateGPA(GPA);
 
-            double salery = intern.OriginalSalary;
+            double salary = intern.OriginalSalary;
 
 
             if (0 <= GPA && GPA <= 5) {
                 emp.updateSalary(0);  // No salary for GPA < 5
             } else if (5 < GPA && GPA <= 8) {
-                emp.updateSalary(salery );
+                emp.updateSalary(salary );
             } else if (8 < GPA && GPA <= 10) {
-                emp.updateSalary(salery  + 1000); // Bonus for high GPA case
+                emp.updateSalary(salary  + 1000); // Bonus for high GPA case
             } else {
                 String errorMessage = String.format("%d outside range. Must be between 0-10.", GPA);
                 throw new Exception(errorMessage);
@@ -349,8 +334,7 @@ public class Company {
     public String updateManagerDegree(String empID, String degree) throws Exception{
         Employee emp = findEmployeeByID(empID);
 
-        if (emp instanceof Manager) {
-            Manager manager = (Manager) emp;
+        if (emp instanceof Manager manager) {
             double initialSalary = emp.getGrossSalary();
 
 
@@ -382,8 +366,7 @@ public class Company {
         Employee emp = findEmployeeByID(empID);
 
 
-        if (emp instanceof Director) {
-            Director director = (Director) emp;
+        if (emp instanceof Director director) {
 
 
             director.setDepartment(department);
@@ -400,51 +383,51 @@ public class Company {
 
         return "Employee " + empID + " was updated successfully";}
 
-    
 
-       
-            public static void main() throws Exception {
-                
-                 
-                Locale.setDefault(Locale.US);
-                
-             
-                
-                Company facade = new Company();
 
-                try{
-                    // 2 employees, 2 directors, 1 manager, 3 interns
-                    // G: Gross salary; N: Net salary
-                    facade.createEmployee("Emp1", "Elektra", 35000.50, "MSc", "Business");
-                    facade.createEmployee("Emp2", "Blanca", 45000.00, "PhD", "Human Resources");
-                    facade.createEmployee("Emp3", "Pray Tell", 25000.25, "BSc");
-                    // G: 27500.27; N: 24750.24
-                    facade.createEmployee("Emp4", "Lulu", 20000.00, 9);
-                    // G: 21000.00; N: 21000.00
-                    facade.createEmployee("Emp5", "Angel", 28500.10, 7);
-                    // G: 28500.10; N: 28500.10
-                    facade.createEmployee("Emp6", "Candy", 35000.50, 4);
-                    // G: 0.00; N: 0.00
-                    facade.createEmployee("Emp7", "Ricky", 23500.00);
-                    // G: 23500.00; N: 21150.00
-                    facade.createEmployee("Emp8", "Damon", 22100.00);
-                    // G: 22100.00; N: 19890.00
-                    }catch(Exception e){
-                    }
-                    
-        
-                    
 
-            Map<String, Integer> actualMap = facade.mapEachDegree();
-            facade.removeEmployee("Emp2"); // Remove Blanca with the PhD
-            //Adds temporary employees with more 3 MSc and 1 BSc
-            facade.createEmployee("Temp1", "John Doe", 25000.0, "MSc");
-            facade.createEmployee("Temp2", "Jane Doe", 25000.0, "MSc");
-            facade.createEmployee("Temp3", "Mary Doe", 25000.0, "MSc");
-            facade.createEmployee("Temp4", "Mark Doe", 25000.0, "BSc");
-            actualMap = facade.mapEachDegree();
-            System.out.println(actualMap);
-            
-            
-                }            
+    public static void main() throws Exception {
+
+
+        Locale.setDefault(Locale.US);
+
+
+
+        Company facade = new Company();
+
+        try{
+            // 2 employees, 2 directors, 1 manager, 3 interns
+            // G: Gross salary; N: Net salary
+            facade.createEmployee("Emp1", "Elektra", 35000.50, "MSc", "Business");
+            facade.createEmployee("Emp2", "Blanca", 45000.00, "PhD", "Human Resources");
+            facade.createEmployee("Emp3", "Pray Tell", 25000.25, "BSc");
+            // G: 27500.27; N: 24750.24
+            facade.createEmployee("Emp4", "Lulu", 20000.00, 9);
+            // G: 21000.00; N: 21000.00
+            facade.createEmployee("Emp5", "Angel", 28500.10, 7);
+            // G: 28500.10; N: 28500.10
+            facade.createEmployee("Emp6", "Candy", 35000.50, 4);
+            // G: 0.00; N: 0.00
+            facade.createEmployee("Emp7", "Ricky", 23500.00);
+            // G: 23500.00; N: 21150.00
+            facade.createEmployee("Emp8", "Damon", 22100.00);
+            // G: 22100.00; N: 19890.00
+        }catch(Exception e){
+        }
+
+
+
+
+        Map<String, Integer> actualMap = facade.mapEachDegree();
+        facade.removeEmployee("Emp2"); // Remove Blanca with the PhD
+        //Adds temporary employees with more 3 MSc and 1 BSc
+        facade.createEmployee("Temp1", "John Doe", 25000.0, "MSc");
+        facade.createEmployee("Temp2", "Jane Doe", 25000.0, "MSc");
+        facade.createEmployee("Temp3", "Mary Doe", 25000.0, "MSc");
+        facade.createEmployee("Temp4", "Mark Doe", 25000.0, "BSc");
+        actualMap = facade.mapEachDegree();
+        System.out.println(actualMap);
+
+
+    }
 }
