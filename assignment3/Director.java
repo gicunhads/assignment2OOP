@@ -11,7 +11,7 @@ public class Director extends Manager {
         super(ID, name, grossSalary, degree);
         this.department = department.trim().toLowerCase();
         if (!List.of("human resources", "technical", "business").contains(this.department)) {
-            throw new Exception("Invalid department.");
+            throw new Exception("Department must be one of the options: Business, Human Resources or Technical.");
         }
         this.grossSalary = calculateGrossSalaryWithDepartmentBonus(grossSalary);
         System.out.println(String.format("Director %s was registered successfully", ID));

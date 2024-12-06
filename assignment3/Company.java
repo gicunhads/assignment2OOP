@@ -411,6 +411,10 @@ public class Company {
             director.updateSalary(totalSalary + 5000);
         }
 
+        if (!department.equalsIgnoreCase("Business") && !department.equalsIgnoreCase("Human Resources") && !department.equalsIgnoreCase("Technical")) {
+            throw new Exception("Department must be one of the options: Business, Human Resources or Technical.");
+        }
+
         return "Employee " + empID + " was updated successfully";}
 
 
