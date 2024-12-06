@@ -141,66 +141,49 @@ public class Company {
 
 
     public Map<String, Integer> mapEachDegree() throws Exception {
-        if (dictEmployees.isEmpty()){
-            String errorMessage = String.format("No employees registered yet.");
-            throw new Exception(errorMessage);
-        } else {
+        if (dictEmployees.isEmpty()) {
+            throw new Exception("No employees registered yet.");
+        }
 
-            int bsc = 0;
-            int msc = 0;
-            int phd = 0;
+        int bsc = 0;
+        int msc = 0;
+        int phd = 0;
 
-            Map<String, Integer> employeeDegreeDetails = new HashMap<>();
+        Map<String, Integer> employeeDegreeDetails = new HashMap<>();
 
-
-            for (Employee employee : dictEmployees.values()) {
-                if (employee instanceof Manager manager) {
-                    String degree = manager.getDegree();
-                    if (degree.equalsIgnoreCase("bsc")) {
-
-                        bsc += 1;
-                    } else if (degree.equalsIgnoreCase("msc")) {
-
-                        msc += 1;
-                    }
-                } else if (employee instanceof Director director) {
-                    String degree = director.getDegree();
-                    if (degree.equalsIgnoreCase("bsc")) {
-
-                        bsc += 1;
-                    } else if (degree.equalsIgnoreCase("msc")) {
-
-                        msc += 1;
-                    } else if (degree.equalsIgnoreCase("phd")) {
-
-                        phd += 1;
-                    }
+        // Count degrees
+        for (Employee employee : dictEmployees.values()) {
+            if (employee instanceof Manager manager) {
+                String degree = manager.getDegree();
+                if (degree.equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (degree.equalsIgnoreCase("msc")) {
+                    msc += 1;
+                }
+            } else if (employee instanceof Director director) {
+                String degree = director.getDegree();
+                if (degree.equalsIgnoreCase("bsc")) {
+                    bsc += 1;
+                } else if (degree.equalsIgnoreCase("msc")) {
+                    msc += 1;
+                } else if (degree.equalsIgnoreCase("phd")) {
+                    phd += 1;
                 }
             }
-            if (bsc > 0) {
-                employeeDegreeDetails.put("BSc", bsc);
-            } else {
-
-                employeeDegreeDetails.put("BSc", null);
-            }
-
-            if (msc > 0) {
-                employeeDegreeDetails.put("MSc", msc);
-            } else {
-
-                employeeDegreeDetails.put("MSc", null);
-            }
-
-            if (phd > 0) {
-                employeeDegreeDetails.put("PhD", phd);
-            } else {
-
-                employeeDegreeDetails.put("PhD", null);
-            }
-
-
-            return employeeDegreeDetails;
         }
+
+        // Add keys for degrees only if their count is > 0
+        if (bsc > 0) {
+            employeeDegreeDetails.put("BSc", bsc);
+        }
+        if (msc > 0) {
+            employeeDegreeDetails.put("MSc", msc);
+        }
+        if (phd > 0) {
+            employeeDegreeDetails.put("PhD", phd);
+        }
+
+        return employeeDegreeDetails;
     }
 
 
