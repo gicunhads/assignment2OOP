@@ -9,8 +9,7 @@ public class EmployeeFactory {
         if (grossSalary < 0) {
             throw new InvalidSalaryException(grossSalary);
         }
-        Manager manager = new Manager(id, name, grossSalary, degree);
-        return manager;
+        return new Manager(id, name, grossSalary, degree);
 
 
     }
@@ -25,8 +24,7 @@ public class EmployeeFactory {
         if (department == null || department.isEmpty()) {
             throw new InvalidEmployeeDataException(department);
         }
-        Director director = new Director(id, name, grossSalary, degree, department);
-        return director;
+        return new Director(id, name, grossSalary, degree, department);
     }
 
     public Intern createEmployee(String id, String name, double grossSalary, int gpa) throws ValidationException{
@@ -39,8 +37,7 @@ public class EmployeeFactory {
         if (gpa < 0 || gpa > 10) {
             throw new InvalidGpaException(gpa);
         }
-        Intern intern = new Intern(id, name, grossSalary, gpa);
-        return intern;
+        return new Intern(id, name, grossSalary, gpa);
     }
 
     public Employee createEmployee(String id, String name, double grossSalary)throws ValidationException {
@@ -50,7 +47,6 @@ public class EmployeeFactory {
         if (grossSalary < 0) {
             throw new InvalidSalaryException(grossSalary);
         }
-        Employee employee = new Employee(id, name, grossSalary);
-        return employee;
+        return new Employee(id, name, grossSalary);
     }
 }
