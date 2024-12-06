@@ -15,7 +15,7 @@ public class Employee {
         this.grossSalary = DoubleFormat.truncate(grossSalary);
         this.tax = 0.1;
 
-        System.out.println(String.format("Employee %s was registered successfully", this.ID)); }
+        System.out.printf("Employee %s was registered successfully%n", this.ID); }
 
 
     public String getName(){
@@ -54,3 +54,4 @@ public class Employee {
     }
 
 }
+ Missing newline at the end of file.
