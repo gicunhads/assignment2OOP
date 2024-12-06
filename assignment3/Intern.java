@@ -6,13 +6,13 @@ public class Intern extends Employee {
     double OriginalSalary;
 
     public Intern(String ID, String name, double grossSalary, int GPA) {
-        super(ID, name, grossSalary); 
+        super(ID, name, grossSalary);
         this.GPA = GPA;
         this.OriginalSalary = grossSalary;
         this.grossSalary = getNetSalary(); // because gpa doesnt pay taxes
-        
 
-        System.out.println(String.format("Employee %s was registered successfully", ID));
+
+        System.out.printf("Employee %s was registered successfully%n", ID);
     }
 
     public void updateGPA(int newGPA) {
@@ -36,7 +36,7 @@ public class Intern extends Employee {
     @Override
     public String getEmployeesInfo() {
         return String.format("%s's gross salary is %.2f SEK per month. GPA: %d",
-                     this.name, getGrossSalary(), this.GPA);
+                this.name, getGrossSalary(), this.GPA);
 
     }
 }
